@@ -1,0 +1,27 @@
+<!-- src/app/register/register.component.html -->
+<div class="register-container">
+    <h2>Cadastro</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div>
+        <label for="username">Username</label>
+        <input id="username" [(ngModel)]="username" name="username" required />
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" [(ngModel)]="email" name="email" required />
+      </div>
+      <div>
+        <label for="cpf">CPF</label>
+        <input id="cpf" [(ngModel)]="cpf" name="cpf" required />
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <input type="password" id="password" [(ngModel)]="password" name="password" required />
+      </div>
+      <button type="submit">Cadastrar</button>
+    </form>
+    <div *ngIf="errorMessage" class="error">
+      {{ errorMessage }}
+    </div>
+  </div>
+  

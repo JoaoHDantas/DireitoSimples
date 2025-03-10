@@ -1,0 +1,55 @@
+/* src/app/register/register.component.css */
+.register-container {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #e0f7fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+    color: #00796b;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  div {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    font-size: 14px;
+    color: #00796b;
+  }
+  
+  input {
+    padding: 8px;
+    border: 1px solid #00796b;
+    border-radius: 4px;
+    margin-top: 5px;
+  }
+  
+  button {
+    background-color: #00796b;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #004d40;
+  }
+  
+  .error {
+    color: red;
+    font-size: 14px;
+    text-align: center;
+  }
+  

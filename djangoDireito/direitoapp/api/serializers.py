@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth import authenticate
-from models import CustomUser
+from direitoapp.models import CustomUser
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,7 +17,10 @@ class LoginSerializer(serializers.Serializer):
     password = serializers.CharField(write_only=True)
 
     def validate(self, data):
-        user = authenticate(username=data['username'], password=data['password'])
+        username = data['username']
+        password = data['password']
+
+        user = authenticate(username=username, password=password)
         if not user:
             raise serializers.ValidationError("Credenciais inválidas.")
-        return user
+        return {'user': user}  # Retorna o usuário no validated_data
