@@ -1,7 +1,14 @@
 /* src/app/register/register.component.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+  font-family: poppins;
+  color: #131D29;
+}
+
 .register-container {
     width: 300px;
-    margin: 0 auto;
+    margin: 5% auto 0px auto;;
     padding: 20px;
     background-color: #e0f7fa;
     border-radius: 8px;
@@ -10,7 +17,6 @@
   
   h2 {
     text-align: center;
-    color: #00796b;
   }
   
   form {
@@ -20,22 +26,23 @@
   
   div {
     margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
   }
   
   label {
     font-size: 14px;
-    color: #00796b;
   }
   
   input {
     padding: 8px;
-    border: 1px solid #00796b;
+    border: 1px solid #131D29;
     border-radius: 4px;
     margin-top: 5px;
   }
   
   button {
-    background-color: #00796b;
+    background-color: #0A142F;
     color: white;
     border: none;
     padding: 10px;
@@ -44,7 +51,7 @@
   }
   
   button:hover {
-    background-color: #004d40;
+    background-color: #273048;
   }
   
   .error {

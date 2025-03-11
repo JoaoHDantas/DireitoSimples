@@ -5,11 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component'; // Importar o LoginComponent
 import { RegisterComponent } from './register/register.component'; // Importar o RegisterComponent
-import { FormsModule } from '@angular/forms';  // Importar FormsModule globalmente
+import { FormsModule } from '@angular/forms';
+import { NavbarComponent } from './navbar/navbar.component';  // Importar FormsModule globalmente
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms';  // Importar FormsModule globalmen
     LoginComponent,   // Adicionando o LoginComponent nos imports
     RegisterComponent,
     HttpClientModule, // Adicionando o RegisterComponent nos imports
-    FormsModule
+    FormsModule,
+    NavbarComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
