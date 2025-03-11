@@ -1,0 +1,42 @@
+@use '../../styles.scss';
+*{
+    color: #fff;
+    font-family: poppins, sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.estudandodireito{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    background: linear-gradient(90deg, #0A142F, #3E5286);
+    // background-color: #247ed8;
+    justify-content: space-evenly;
+}
+
+.navbar ul {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    list-style-type: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+}
+.navbar ul li {
+    padding: 10px;
+}
+.navbar ul li a{
+    text-decoration: none;
+}
+.perfilnav a{
+    text-decoration: none;
+}

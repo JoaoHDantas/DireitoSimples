@@ -1,14 +1,13 @@
 <div *ngIf="homeData">
-    <h1>{{ homeData.message }}</h1>  
-    <p>Status: {{ homeData.status }}</p>  
-  
-    <div *ngIf="homeData.items">
-      <h3>Itens:</h3>
-      <ul>
-        <li *ngFor="let item of homeData.items">{{ item }}</li>  <!-- Lista de itens retornados -->
-      </ul>
+    <app-navbar></app-navbar>
+    <div class="homecontainer">    
+      <div class="infohomecontainer">
+        <h1>Comece a estudar agora  as novas mudanças do código penal!</h1>
+        <p>Atualizado com a nova mudança do cod. penal</p>
+      </div>
     </div>
-  </div>
+
+</div>
   
   <!-- Exibe uma mensagem enquanto os dados estão sendo carregados -->
   <div *ngIf="!homeData">
