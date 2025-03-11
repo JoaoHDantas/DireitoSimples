@@ -24,3 +24,7 @@ class LoginSerializer(serializers.Serializer):
         if not user:
             raise serializers.ValidationError("Credenciais inválidas.")
         return {'user': user}  # Retorna o usuário no validated_data
+
+class HomepageSerializer(serializers.Serializer):
+    message = serializers.CharField()
+    status = serializers.CharField()
