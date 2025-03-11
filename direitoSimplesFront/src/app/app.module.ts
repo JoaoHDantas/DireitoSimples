@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginComponent } from './login/login.component'; // Importar o LoginComponent
 import { RegisterComponent } from './register/register.component'; // Importar o RegisterComponent
-import { FormsModule } from '@angular/forms';  // Importar FormsModule globalmente
+import { FormsModule } from '@angular/forms';
+import { AuthInterceptor } from './auth.interceptor';
+import { HomeComponent } from './home/home.component';  // Importar FormsModule globalmente
 
 @NgModule({
   declarations: [
@@ -14,12 +16,17 @@ import { FormsModule } from '@angular/forms';  // Importar FormsModule globalmen
   imports: [
     BrowserModule,
     AppRoutingModule,
-    LoginComponent,   // Adicionando o LoginComponent nos imports
+    LoginComponent,   
     RegisterComponent,
-    HttpClientModule, // Adicionando o RegisterComponent nos imports
+    HomeComponent,
+    HttpClientModule, 
     FormsModule
   ],
-  providers: [],
+  providers: [ {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true  // Permitindo múltiplos interceptores
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

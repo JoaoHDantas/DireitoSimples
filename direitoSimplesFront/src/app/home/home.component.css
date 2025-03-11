@@ -1,0 +1,22 @@
+div {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  h1 {
+    color: #00796b;
+  }
+  
+  p {
+    color: #004d40;
+  }
+  
+  ul {
+    list-style-type: none;
+  }
+  
+  li {
+    font-size: 16px;
+    color: #00796b;
+  }
+  

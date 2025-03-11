@@ -22,13 +22,14 @@ export class LoginComponent {
   onSubmit() {
     this.authService.login(this.username, this.password).subscribe(
       (response) => {
-        // Armazena o token no localStorage ou sessionStorage
-        localStorage.setItem('access_token', response.access);
-        this.router.navigate(['/dashboard']);  // Direciona para a tela de dashboard ou home
+        // Redirecionar para a homepage após o login bem-sucedido
+        this.router.navigate(['/home']);
       },
       (error) => {
-        this.errorMessage = 'Credenciais inválidas';
+        // Exibir uma mensagem de erro se as credenciais estiverem incorretas
+        this.errorMessage = 'Credenciais inválidas. Tente novamente.';
       }
     );
   }
+
 }
