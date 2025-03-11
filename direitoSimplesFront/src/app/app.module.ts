@@ -21,8 +21,6 @@ import { NavbarComponent } from './navbar/navbar.component';  // Importar FormsM
     RegisterComponent,
     HomeComponent,
     HttpClientModule, 
-    FormsModule
-    HttpClientModule, // Adicionando o RegisterComponent nos imports
     FormsModule,
     NavbarComponent
   ],
