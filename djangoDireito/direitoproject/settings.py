@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'rest_framework.authtoken',
+    'behave_django',
+    'pytest_django',
 ]
 
 MIDDLEWARE = [
