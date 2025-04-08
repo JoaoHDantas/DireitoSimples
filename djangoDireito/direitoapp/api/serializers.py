@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth import authenticate
-from direitoapp.models import CustomUser
+from direitoapp.models import CustomUser, Question
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -28,3 +28,8 @@ class LoginSerializer(serializers.Serializer):
 class HomepageSerializer(serializers.Serializer):
     message = serializers.CharField()
     status = serializers.CharField()
+
+class QuestionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Question
+        fields = '__all__'
