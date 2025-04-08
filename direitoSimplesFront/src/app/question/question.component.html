@@ -1,9 +1,9 @@
 <div class="question-wrapper" *ngIf="question">
     <div class="question-header">
+      <img src="assets/img/corujadireito.png" alt="Coruja Advogada" class="mascot">
     </div>
   
     <div class="question-content">
-      <img src="/assets/owl-law.png" alt="Coruja Advogada" class="mascot">
       <div class="question-body">
         <h2 class="question-text">{{ question.question_text }}</h2>
   
@@ -26,9 +26,7 @@
     </div>
   
     <div class="question-footer">
-      <div class="easy-button">
-        <button class="skip">Ignorar essa questão</button>
-      </div>
       <button class="submit" (click)="submitAnswer()" [disabled]="!selectedAnswer">Próxima questão</button>
+  
     </div>
   </div>

@@ -62,9 +62,6 @@ class HomepageViewSet(viewsets.ViewSet):
 class QuestionViewSet(viewsets.ModelViewSet):
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer
-
-class QuestionViewSet(viewsets.ViewSet):
-
     def list(self, request):
         questions = Question.objects.all()
         serializer = QuestionSerializer(questions, many=True)

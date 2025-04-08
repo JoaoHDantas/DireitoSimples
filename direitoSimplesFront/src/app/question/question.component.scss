@@ -76,7 +76,7 @@
   }
   
   .alternatives li.selected {
-    background: #1a2e5a;
+    background: #1a2e5a4a;
     color: white;
   }
   
@@ -107,7 +107,7 @@
   
   .question-footer {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     margin-top: 2rem;
   }
