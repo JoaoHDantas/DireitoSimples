@@ -1,14 +1,12 @@
-// src/app/question/question.component.ts
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';  // Importar CommonModule
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { QuestionService } from '../question.service';
 import { ActivatedRoute } from '@angular/router';
 
-
 @Component({
   selector: 'app-question',
-  standalone: true,  // Isso marca o componente como standalone
+  standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './question.component.html',
   styleUrls: ['./question.component.scss']
@@ -19,21 +17,35 @@ export class QuestionComponent implements OnInit {
   selectedAnswer: string = '';
   feedback: any;
 
+  questionsList: any[] = [];
+  questionIndex: number = 0;
+  totalQuestions: number = 0;
+
   constructor(
     private route: ActivatedRoute,
     private questionService: QuestionService
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.questionId = +params['id'];
-      this.loadQuestion();
+    this.questionService.getQuestions().subscribe((data: any[]) => {
+      this.questionsList = data;
+      this.totalQuestions = data.length;
+
+      this.route.params.subscribe(params => {
+        const paramId = +params['id'];
+        const index = this.questionsList.findIndex(q => q.id === paramId);
+        this.questionIndex = index !== -1 ? index : 0;
+        this.questionId = this.questionsList[this.questionIndex].id;
+        this.loadQuestion();
+      });
     });
   }
 
   loadQuestion(): void {
     this.questionService.getQuestionById(this.questionId).subscribe(data => {
       this.question = data;
+      this.selectedAnswer = '';
+      this.feedback = null;
     });
   }
 
@@ -46,5 +58,21 @@ export class QuestionComponent implements OnInit {
     this.questionService.submitAnswers(answerPayload).subscribe(res => {
       this.feedback = res.find((f: any) => f.question_id == this.questionId);
     });
+  }
+
+  skipQuestion(): void {
+    if (this.questionIndex < this.totalQuestions - 1) {
+      this.questionIndex++;
+      this.questionId = this.questionsList[this.questionIndex].id;
+      this.loadQuestion();
+    }
+  }
+
+  goToPreviousQuestion(): void {
+    if (this.questionIndex > 0) {
+      this.questionIndex--;
+      this.questionId = this.questionsList[this.questionIndex].id;
+      this.loadQuestion();
+    }
   }
 }

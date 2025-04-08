@@ -19,4 +19,8 @@ export class QuestionService {
   submitAnswers(answers: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}submit_answers/`, answers);
   }
+  
+  getQuestions() {
+    return this.http.get<any[]>('http://localhost:8000/api/questions/');
+  }
 }
