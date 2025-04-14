@@ -87,6 +87,7 @@
     background: #2a3e82;
     margin-top: 4px;
   }
+
   
   .alternative-text {
     flex: 1;
@@ -107,7 +108,7 @@
   
   .question-footer {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     margin-top: 2rem;
   }

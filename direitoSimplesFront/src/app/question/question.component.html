@@ -1,45 +1,12 @@
 <div class="question-wrapper" *ngIf="question">
-<<<<<<< Updated upstream
-    <div class="question-header">
-      <img src="assets/img/corujadireito.png" alt="Coruja Advogada" class="mascot">
-    </div>
-  
-    <div class="question-content">
-      <div class="question-body">
-        <h2 class="question-text">{{ question.question_text }}</h2>
-  
-        <ul class="alternatives">
-          <li *ngFor="let alt of ['A', 'B', 'C', 'D', 'E']"
-              [class.selected]="selectedAnswer === alt"
-              (click)="selectAnswer(alt)">
-            <span class="circle"></span>
-            <span class="alternative-text">{{ question['alternative_' + alt.toLowerCase()] }}</span>
-          </li>
-        </ul>
-  
-        <div class="feedback" *ngIf="feedback">
-          <p [class.correct]="feedback.is_correct" [class.incorrect]="!feedback.is_correct">
-            {{ feedback.is_correct ? '✅ Resposta correta!' : '❌ Resposta incorreta.' }}
-          </p>
-          <p *ngIf="!feedback.is_correct">Resposta correta: {{ feedback.correct_answer }}</p>
-        </div>
-      </div>
-    </div>
-  
-    <div class="question-footer">
-      <button class="submit" (click)="submitAnswer()" [disabled]="!selectedAnswer">Próxima questão</button>
-  
-    </div>
-  </div>
-=======
   <div class="question-header">
+    <img src="/assets/img/corujadireito.png" alt="Coruja Advogada" class="mascot" />
     <p class="question-counter">
       Questão {{ questionIndex + 1 }} de {{ totalQuestions }}
     </p>
   </div>
 
   <div class="question-content">
-    <img src="/assets/owl-law.png" alt="Coruja Advogada" class="mascot" />
     <div class="question-body">
       <h2 class="question-text">{{ question.question_text }}</h2>
 
@@ -62,7 +29,7 @@
   </div>
 
   <div class="question-footer">
-    <button class="back" (click)="goToPreviousQuestion()" [disabled]="questionIndex === 0">
+    <button class="skip" (click)="goToPreviousQuestion()" [disabled]="questionIndex === 0">
       Voltar questão
     </button>
 
@@ -77,4 +44,3 @@
     </button>
   </div>
 </div>
->>>>>>> Stashed changes
