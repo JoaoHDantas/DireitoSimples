@@ -28,6 +28,12 @@
     </div>
   </div>
 
+  <div style="text-align: right; margin-top: 1rem;">
+    <button class="submit" (click)="submitAnswer()" [disabled]="!selectedAnswer">
+      Responder
+    </button>
+  </div>
+  
   <div class="question-footer">
     <button class="skip" (click)="goToPreviousQuestion()" [disabled]="questionIndex === 0">
       Voltar questão
@@ -38,9 +44,5 @@
     </button>
   </div>
 
-  <div style="text-align: right; margin-top: 1rem;">
-    <button class="submit" (click)="submitAnswer()" [disabled]="!selectedAnswer">
-      Responder
-    </button>
-  </div>
+
 </div>

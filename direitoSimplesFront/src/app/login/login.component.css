@@ -6,9 +6,22 @@
   font-family: poppins;
   color: #131D29;
 }
+main{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  overflow: hidden;
+  height: 100vh;
+
+}
+main img{
+  max-height: 100vh;
+  margin: 0 -100px 0 -100px;
+
+}
 .login-container {
     width: 300px;
-    margin: 6rem auto 0px auto;;
     padding: 20px;
     background-color: #e0f7fa;
     border-radius: 8px;
