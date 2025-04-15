@@ -75,4 +75,15 @@ export class QuestionComponent implements OnInit {
       this.loadQuestion();
     }
   }
+  toggleFullscreen() {
+    const elem = document.documentElement;
+  
+    if (!document.fullscreenElement) {
+      elem.requestFullscreen().catch((err) => {
+        console.error(`Erro ao tentar ativar o modo tela cheia: ${err.message}`);
+      });
+    } else {
+      document.exitFullscreen();
+    }
+  }
 }

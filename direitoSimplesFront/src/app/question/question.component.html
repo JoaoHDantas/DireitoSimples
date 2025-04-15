@@ -1,10 +1,15 @@
+<div class="question-header">
+  <img src="/assets/img/corujadireito.png" alt="Coruja Advogada" class="mascot" />
+  <p class="question-counter">
+    Questão {{ questionIndex + 1 }} de {{ totalQuestions }}
+  </p>
+  <button class="fullscreen-button" (click)="toggleFullscreen()">
+    <button class="fullscreen-button" (click)="toggleFullscreen()" aria-label="Tela cheia">
+      <img src="/assets/icons/telacheia.svg" alt="Tela cheia" />
+    </button>
+  </button>
+</div>
 <div class="question-wrapper" *ngIf="question">
-  <div class="question-header">
-    <img src="/assets/img/corujadireito.png" alt="Coruja Advogada" class="mascot" />
-    <p class="question-counter">
-      Questão {{ questionIndex + 1 }} de {{ totalQuestions }}
-    </p>
-  </div>
 
   <div class="question-content">
     <div class="question-body">
