@@ -48,17 +48,16 @@ class LoginViewSet(viewsets.ViewSet):
         }, status=status.HTTP_200_OK)
 
 class HomepageViewSet(viewsets.ViewSet):
-    permission_classes = [IsAuthenticated]  
-
+    permission_classes = [AllowAny]
+    
     def list(self, request):
         data = {
             "message": "Bem-vindo à sua homepage!",
             "status": "sucesso",
-            "items": ["Item 1", "Item 2", "Item 3"], 
         }
         serializer = HomepageSerializer(data)
         return Response(serializer.data)
-    
+
 class QuestionViewSet(viewsets.ModelViewSet):
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer

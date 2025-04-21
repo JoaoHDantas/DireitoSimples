@@ -18,7 +18,12 @@ from django.contrib import admin
 from django.urls import path, include
 from direitoapp.api.router import router
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from direitoapp.api.viewsets import HomepageViewSet
+from rest_framework.routers import DefaultRouter
 
+
+router = DefaultRouter()
+router.register(r'home', HomepageViewSet, basename='home')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

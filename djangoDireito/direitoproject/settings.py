@@ -65,7 +65,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:4200',  # Permite requisições do frontend
+    'http://localhost:4200',
 ]
 
 ROOT_URLCONF = 'direitoproject.urls'
@@ -149,7 +149,10 @@ AUTH_USER_MODEL = "direitoapp.CustomUser"
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',  # Para outras rotas que exigem autenticação
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.AllowAny',  # Permitir acesso sem autenticação a todas as rotas
     ),
 }
 
