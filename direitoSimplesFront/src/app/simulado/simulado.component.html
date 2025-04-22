@@ -1,32 +1,49 @@
-<div *ngIf="!finalizado">
-    <h2>Pergunta {{ currentQuestionIndex + 1 }} de {{ questions.length }}</h2>
-    <p>{{ questions[currentQuestionIndex]?.question_text }}</p>
-  
-    <div *ngFor="let alt of ['A', 'B', 'C', 'D', 'E']">
-      <button (click)="responder(alt)"
-              [class.selected]="respostas[questions[currentQuestionIndex]?.id] === alt">
-        {{ alt }} - {{ questions[currentQuestionIndex]?.['alternative_' + alt.toLowerCase()] }}
+<div *ngIf="!finalizado" class="question-wrapper">
+  <div class="question-header">
+    <img src="/assets/img/corujadireito.png" alt="Coruja Advogada" class="mascot" />
+    <p class="question-counter">
+      Pergunta {{ currentQuestionIndex + 1 }} de {{ questions.length }}
+    </p>
+    <button class="fullscreen-button" (click)="toggleFullscreen()" aria-label="Tela cheia">
+      <img src="/assets/icons/telacheia.svg" alt="Tela cheia" />
+    </button>
+  </div>
+
+  <h1 class="question-text">{{ questions[currentQuestionIndex]?.question_text }}</h1>
+
+  <div class="alternatives">
+    <div *ngFor="let alt of ['A', 'B', 'C', 'D', 'E']"
+         [class.selected]="respostas[questions[currentQuestionIndex]?.id] === alt"
+         class="alternative">
+      <button (click)="responder(alt)">
+        <span class="circle"></span>
+        <span class="alternative-text">
+          {{ alt }} - {{ questions[currentQuestionIndex]?.['alternative_' + alt.toLowerCase()] }}
+        </span>
       </button>
     </div>
-  
-    <div style="margin-top: 20px;">
-      <button (click)="irPara(currentQuestionIndex - 1)" [disabled]="currentQuestionIndex === 0">Anterior</button>
-      <button (click)="irPara(currentQuestionIndex + 1)" [disabled]="currentQuestionIndex === questions.length - 1">Próxima</button>
-    </div>
-  
-    <button (click)="finalizar()" style="margin-top: 20px;">Finalizar Simulado</button>
   </div>
-  
-  <div *ngIf="finalizado">
-    <h2>Resultado do Simulado</h2>
-    <ul>
-      <li *ngFor="let q of questions">
-        {{ q.question_text }}<br />
-        Sua resposta: {{ respostas[q.id] }} |
-        Correta: {{ q.correct_answer }} |
-        <strong *ngIf="respostaCorreta(q.id, q.correct_answer)">✔</strong>
-        <strong *ngIf="!respostaCorreta(q.id, q.correct_answer)">✘</strong>
-      </li>
-    </ul>
+
+  <div class="question-footer">
+    <button class="skip" (click)="irPara(currentQuestionIndex - 1)" [disabled]="currentQuestionIndex === 0">Anterior</button>
+    <button class="skip" (click)="irPara(currentQuestionIndex + 1)" [disabled]="currentQuestionIndex === questions.length - 1">Próxima</button>
   </div>
-  
+
+  <div style="text-align: right; margin-top: 1rem;">
+    <button class="submit" (click)="finalizar()">Finalizar Simulado</button>
+  </div>
+</div>
+
+<div *ngIf="finalizado" class="resultado">
+    <h2 class="question-text">Resultado do Simulado</h2>
+    <button class="submit" (click)="voltarHome()">Voltar para a Home</button>
+  <ul class="resultado-alternatives">
+    <li *ngFor="let q of questions" class="resultado-alternative">
+      {{ q.question_text }}<br />
+      Sua resposta: {{ respostas[q.id] }} |
+      Correta: {{ q.correct_answer }} |
+      <strong *ngIf="respostaCorreta(q.id, q.correct_answer)">✔</strong>
+      <strong *ngIf="!respostaCorreta(q.id, q.correct_answer)">✘</strong>
+    </li>
+  </ul>
+</div>

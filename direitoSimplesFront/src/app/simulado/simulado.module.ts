@@ -6,12 +6,11 @@ import { SimuladoComponent } from './simulado.component';
 
 
 @NgModule({
-  declarations: [
-    SimuladoComponent
-  ],
+  declarations: [],
   imports: [
     CommonModule,
-    SimuladoRoutingModule
+    SimuladoRoutingModule,
+    SimuladoComponent
   ]
 })
 export class SimuladoModule { }

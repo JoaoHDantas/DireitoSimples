@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';  // Importar CommonModule
 import { FormsModule } from '@angular/forms';   // Importar FormsModule
 import { QuestionService } from '../question.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-simulado',
@@ -16,7 +17,7 @@ export class SimuladoComponent implements OnInit {
   respostas: { [key: number]: string } = {};
   finalizado = false;
 
-  constructor(private questionService: QuestionService) {}
+  constructor(private questionService: QuestionService, private router: Router) {}
 
   ngOnInit(): void {
     this.questionService.getQuestions().subscribe((data) => {
@@ -40,4 +41,20 @@ export class SimuladoComponent implements OnInit {
   respostaCorreta(id: number, correta: string): boolean {
     return this.respostas[id] === correta;
   }
+  toggleFullscreen() {
+    const elem = document.documentElement;
+  
+    if (!document.fullscreenElement) {
+      elem.requestFullscreen().catch((err) => {
+        console.error(`Erro ao tentar ativar o modo tela cheia: ${err.message}`);
+      });
+    } else {
+      document.exitFullscreen();
+    }
+  }
+
+  voltarHome() {
+    this.router.navigate(['/home/']);
+  }
+  
 }
