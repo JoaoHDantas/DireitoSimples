@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'django.contrib.staticfiles',
     'direitoapp',
+    'inicioapp',
     'rest_framework',
     'rest_framework_simplejwt',
     'rest_framework.authtoken',

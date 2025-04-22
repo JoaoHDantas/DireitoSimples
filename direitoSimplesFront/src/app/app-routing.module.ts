@@ -5,13 +5,15 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { QuestionComponent } from './question/question.component';
+import { SimuladoComponent } from './simulado/simulado.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent },
   {path: 'questions/:id', component: QuestionComponent},
-  { path: '', redirectTo: '/login', pathMatch: 'full' }
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'simulado/:id', component: SimuladoComponent},
 ];
 
 @NgModule({

@@ -8,7 +8,7 @@ import { RegisterComponent } from './register/register.component'; // Importar o
 import { FormsModule } from '@angular/forms';
 import { AuthInterceptor } from './auth.interceptor';
 import { HomeComponent } from './home/home.component';
-import { NavbarComponent } from './navbar/navbar.component';  // Importar FormsModule globalmente
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
