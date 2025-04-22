@@ -35,15 +35,43 @@
 </div>
 
 <div *ngIf="finalizado" class="resultado">
+  <div class="resultado-header">
     <h2 class="question-text">Resultado do Simulado</h2>
     <button class="submit" (click)="voltarHome()">Voltar para a Home</button>
-  <ul class="resultado-alternatives">
-    <li *ngFor="let q of questions" class="resultado-alternative">
-      {{ q.question_text }}<br />
-      Sua resposta: {{ respostas[q.id] }} |
-      Correta: {{ q.correct_answer }} |
-      <strong *ngIf="respostaCorreta(q.id, q.correct_answer)">✔</strong>
-      <strong *ngIf="!respostaCorreta(q.id, q.correct_answer)">✘</strong>
-    </li>
-  </ul>
+  </div>
+
+
+  <div *ngFor="let q of questions" class="resultado-questao">
+    <h3 class="resultado-pergunta">{{ q.question_text }}</h3>
+
+    <div class="alternatives">
+      <div *ngFor="let alt of ['A', 'B', 'C', 'D', 'E']"
+           [ngClass]="{
+             'correta': alt === q.correct_answer && respostas[q.id] === q.correct_answer,
+             'errada': alt === respostas[q.id] && alt !== q.correct_answer,
+             'alternativa-certa': alt === q.correct_answer && respostas[q.id] !== q.correct_answer
+           }"
+           class="alternative">
+        <div class="alternative-button">
+          <span class="circle"></span>
+          <span class="alternative-text">
+            {{ alt }} - {{ q['alternative_' + alt.toLowerCase()] }}
+          </span>
+        </div>
+      </div>
+      <div class="resultado-feedback">
+        <p *ngIf="respostaCorreta(q.id, q.correct_answer)">
+          ✅ Você acertou a alternativa {{ q.correct_answer }}.
+        </p>
+        <p *ngIf="!respostaCorreta(q.id, q.correct_answer)">
+          ❌ Você marcou a alternativa {{ respostas[q.id] }}. A correta era a {{ q.correct_answer }}.
+        </p>
+      
+        <div class="explicacao">
+          <strong>Explicação:</strong>
+          <p>{{ q.explanation }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
