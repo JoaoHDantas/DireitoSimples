@@ -1,17 +1,26 @@
-<nav class='navbar'>
-    <div class="estudandodireito">
-        <h1>Estudando</h1>
-        <h1>Direito</h1>
+<nav class="navbar">
+    <div class="logo">
+      <h1>Estudando</h1>
+      <h1>Direito</h1>
     </div>
-    
-    <ul>
-        <li><a href="#simulados">Simulados</a></li>
-        <li><a href="#downloads">Downloads</a></li>
-        <li><a href="#ajuda">Ajuda</a></li>
-        <li><a href="#caminho-diario">Caminho Diário</a></li>
-    </ul>
-    <div class="perfilnav">
-        <a href="#perfil">Perfil</a>
+  
+    <div class="menu-central">
+      <ng-container *ngIf="authService.isLoggedIn()">
+        <a routerLink="/simulados">Simulados</a>
+        <a href="#">Downloads</a>
+        <a href="#">Ajuda</a>
+        <a href="#">Caminho Diário</a>
+      </ng-container>
     </div>
-    
-</nav>
+  
+    <div class="usuario-nav">
+      <ng-container *ngIf="authService.isLoggedIn(); else entrar">
+        <a routerLink="/perfil">Perfil</a>
+        <button (click)="logout()">Sair</button>
+      </ng-container>
+      <ng-template #entrar>
+        <a routerLink="/login">Entrar</a>
+      </ng-template>
+    </div>
+  </nav>
+  

@@ -10,19 +10,31 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token = this.authService.getAuthToken();  // Obtém o token do localStorage
-
-    if (token) {
-      // Clonar a requisição e adicionar o token no cabeçalho Authorization
+    const token = this.authService.getAuthToken();
+  
+    // Verifica se o token existe e é válido
+    if (token && this.tokenValido(token)) {
       const clonedRequest = req.clone({
         setHeaders: {
           Authorization: `Bearer ${token}`
         }
       });
-
-      return next.handle(clonedRequest);  // Enviar a requisição clonada com o token
+      return next.handle(clonedRequest);
     }
-
-    return next.handle(req);  // Se não houver token, envia a requisição sem token
+  
+    // Caso não haja token ou esteja inválido, segue sem header
+    return next.handle(req);
+  }
+  
+  // Função para verificar validade básica do token JWT
+  private tokenValido(token: string): boolean {
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      const exp = payload.exp;
+      const now = Math.floor(Date.now() / 1000);
+      return exp > now;
+    } catch (e) {
+      return false;
+    }
   }
 }

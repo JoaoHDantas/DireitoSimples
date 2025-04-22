@@ -30,7 +30,8 @@
   </div>
 
   <div style="text-align: right; margin-top: 1rem;">
-    <button class="submit" (click)="finalizar()">Finalizar Simulado</button>
+    <button *ngIf="currentQuestionIndex === questions.length - 1"
+    class="submit" (click)="finalizar()">Finalizar Simulado</button>
   </div>
 </div>
 

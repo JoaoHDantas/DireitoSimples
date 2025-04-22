@@ -49,14 +49,14 @@ class LoginViewSet(viewsets.ViewSet):
 
 class HomepageViewSet(viewsets.ViewSet):
     permission_classes = [AllowAny]
-    
+
     def list(self, request):
         data = {
             "message": "Bem-vindo à sua homepage!",
             "status": "sucesso",
         }
-        serializer = HomepageSerializer(data)
-        return Response(serializer.data)
+        return Response(data)
+
 
 class QuestionViewSet(viewsets.ModelViewSet):
     queryset = Question.objects.all()

@@ -42,4 +42,23 @@ export class AuthService {
   register(username: string, password: string, email: string, cpf: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/register/`, { username, password, email, cpf });
   }
+
+  isLoggedIn(): boolean {
+    const token = this.getAuthToken();
+    if (!token) return false;
+  
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      return payload.exp > Math.floor(Date.now() / 1000); // verifica se ainda está válido
+    } catch (e) {
+      return false;
+    }
+  }
+
+  logout(): void {
+    localStorage.removeItem('authToken');
+  }
+  
 }
+
+

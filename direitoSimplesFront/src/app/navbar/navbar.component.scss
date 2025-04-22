@@ -1,42 +1,54 @@
 @use '../../styles.scss';
-*{
-    color: #fff;
-    font-family: poppins, sans-serif;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
 
-.estudandodireito{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+* {
+  color: #fff;
+  font-family: Poppins, sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 .navbar {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    background: linear-gradient(90deg, #0A142F, #3E5286);
-    // background-color: #247ed8;
-    justify-content: space-evenly;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; // separa as três colunas principais
+  padding: 16px 32px;
+  background: linear-gradient(90deg, #0A142F, #3E5286);
 }
 
-.navbar ul {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    list-style-type: none;
-    text-decoration: none;
-    margin: 0;
-    padding: 0;
+.estudandodireito {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.navbar ul li {
-    padding: 10px;
+
+.menu-central {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  list-style: none;
 }
-.navbar ul li a{
-    text-decoration: none;
+
+.menu-central li a {
+  text-decoration: none;
+  font-weight: 500;
+  color: #fff;
+  transition: color 0.3s ease;
 }
-.perfilnav a{
-    text-decoration: none;
+
+.menu-central li a:hover {
+  color: #dcdcdc;
 }
+
+.perfilnav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.perfilnav a {
+  text-decoration: none;
+  font-weight: 500;
+  color: #fff;
+}
+

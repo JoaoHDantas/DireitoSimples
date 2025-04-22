@@ -1,0 +1,14 @@
+<div class="simulados-container">
+    <h2>Simulados Disponíveis</h2>
+  
+    <ul class="simulados-list">
+      <li *ngFor="let simulado of simulados">
+        <div class="simulado-card">
+          <h3>{{ simulado.titulo }}</h3>
+          <p>{{ simulado.descricao }}</p>
+          <a [routerLink]="['/simulado', simulado.id]">Iniciar</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  

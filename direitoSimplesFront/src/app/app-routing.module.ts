@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { QuestionComponent } from './question/question.component';
 import { SimuladoComponent } from './simulado/simulado.component';
+import { SimuladoListComponent } from './simulado/simulado-list/simulado-list.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'questions/:id', component: QuestionComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'simulado/:id', component: SimuladoComponent},
+  {path: 'simulados',component: SimuladoListComponent},
 ];
 
 @NgModule({

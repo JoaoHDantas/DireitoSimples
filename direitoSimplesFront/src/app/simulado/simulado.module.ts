@@ -3,10 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { SimuladoRoutingModule } from './simulado-routing.module';
 import { SimuladoComponent } from './simulado.component';
+import { SimuladoListComponent } from './simulado-list/simulado-list.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    SimuladoListComponent
+  ],
   imports: [
     CommonModule,
     SimuladoRoutingModule,

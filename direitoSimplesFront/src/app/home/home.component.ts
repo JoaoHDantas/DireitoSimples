@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.homeService.getHomeData().subscribe(
       (data) => {
-        console.log('Dados da homepage:', data);  // Verifique o que está sendo retornado
+        console.log('Dados da homepage:', data);
         this.homeData = data;
       },
       (error) => {
