@@ -16,7 +16,7 @@
     <div class="usuario-nav">
       <ng-container *ngIf="authService.isLoggedIn(); else entrar">
         <a routerLink="/perfil">Perfil</a>
-        <button (click)="logout()">Sair</button>
+        <button class="submit" (click)="logout()">Sair</button>
       </ng-container>
       <ng-template #entrar>
         <a routerLink="/login">Entrar</a>

@@ -29,7 +29,7 @@
   list-style: none;
 }
 
-.menu-central li a {
+.menu-central a {
   text-decoration: none;
   font-weight: 500;
   color: #fff;
@@ -40,15 +40,24 @@
   color: #dcdcdc;
 }
 
-.perfilnav {
+.usuario-nav {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.perfilnav a {
+.usuario-nav a {
   text-decoration: none;
   font-weight: 500;
   color: #fff;
 }
-
+.submit {
+  background: #0f1633;
+  color: white;
+  padding: 0.3rem 1rem;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+}

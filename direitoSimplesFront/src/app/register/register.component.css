@@ -72,4 +72,10 @@ main img{
     font-size: 14px;
     text-align: center;
   }
+  .login-redirecionar {
+    margin-top: 0.5rem;
+    cursor: pointer;
+    font-size: 12px;
+    text-decoration: underline;
+  }
   

@@ -31,4 +31,7 @@ export class RegisterComponent {
       }
     );
   }
+  redirecionar_login() {
+    this.router.navigate(['/login']);
+  }
 }

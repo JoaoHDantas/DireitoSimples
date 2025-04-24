@@ -23,6 +23,7 @@
         </div>
         <button type="submit">Cadastrar</button>
       </form>
+      <p class="login-redirecionar" (click)="redirecionar_login()">Você já está cadastrado? entre aqui!</p>
       <div *ngIf="errorMessage" class="error">
         {{ errorMessage }}
       </div>

@@ -16,7 +16,7 @@ export class NavbarComponent {
   constructor(public authService: AuthService, private router: Router) {}
 
   logout() {
-    this.authService.logout(); // você pode criar essa função para limpar o localStorage
+    this.authService.logout(); 
     this.router.navigate(['/home']);
   }
 

@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';   // Importar FormsModule
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-login',
   standalone: true,  // Isso marca o componente como standalone
@@ -30,6 +31,10 @@ export class LoginComponent {
         this.errorMessage = 'Credenciais inválidas. Tente novamente.';
       }
     );
+  }
+
+  redirecionar_register() {
+    this.router.navigate(['/register/']);
   }
 
 }
