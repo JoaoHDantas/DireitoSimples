@@ -23,6 +23,8 @@ export class LoginComponent {
   onSubmit() {
     this.authService.login(this.username, this.password).subscribe(
       (response) => {
+        
+        localStorage.setItem('token', response.access_token); // <<< ESSA LINHA É FUNDAMENTAL
         // Redirecionar para a homepage após o login bem-sucedido
         this.router.navigate(['/home']);
       },

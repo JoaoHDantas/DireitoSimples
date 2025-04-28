@@ -1,9 +1,13 @@
+.section-simulado-list{
+  display: flex;
+}
 .simulados-container {
     max-width: 800px;
     margin: 40px auto;
     padding: 20px;
     font-family: 'Poppins', sans-serif;
     color: #fff;
+    width: 60%;
   }
   
   h2 {
