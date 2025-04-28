@@ -1,0 +1,74 @@
+*{
+    color: white;
+}
+.inicionavbar {
+    width: 250px;
+    height: 100vh;
+    background: linear-gradient(to bottom, #0f1c2e, #172d4d);
+    color: white;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  nav {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  
+  nav h1 {
+    font-size: 24px;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  
+  li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background 0.3s;
+  }
+  
+  /* HOVER */
+  li:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* um cinza claro sem mudar o texto */
+  }
+  
+  /* SELECIONADO */
+  li.active {
+    background-color: #1574FF; /* azul forte */
+  }
+  
+  li button {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: left;
+  }
+  
+  /* Remover underline dos botões */
+  li button:focus {
+    outline: none;
+  }
+  
+  .icon {
+    font-size: 20px;
+  }
+  

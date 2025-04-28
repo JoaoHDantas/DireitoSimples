@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { SimuladoService, Simulado } from '../simulado.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router'; 
+import { InicionavbarComponent } from '../../inicionavbar/inicionavbar.component';
 
 @Component({
   selector: 'app-simulado-list',
   standalone: true,                         
-  imports: [CommonModule, RouterModule], 
+  imports: [CommonModule, RouterModule, InicionavbarComponent], 
   templateUrl: './simulado-list.component.html',
   styleUrls: ['./simulado-list.component.scss']
 })

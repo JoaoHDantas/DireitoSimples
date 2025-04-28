@@ -1,0 +1,36 @@
+<div class="inicionavbar">
+    <nav>
+      <h1>Estudando<br>Direito</h1>
+      <ul>
+        <li [class.active]="selectedItem === 'estudo-diario' "(click)="redirecionar_estudodiario()">
+          <span class="icon">📔</span>
+          <button>Estudo diário</button>
+        </li>
+        <li [class.active]="selectedItem === 'simulados'" (click)="redirecionar_simulados()">
+          <span class="icon">🎯</span>
+          <button>Simulados</button>
+        </li>
+        <li [class.active]="selectedItem === 'conquistas'" (click)="redirecionar_conquistas()">
+          <span class="icon">🏆</span>
+          <button>Conquistas</button>
+        </li>
+        <li [class.active]="selectedItem === 'artigos'" (click)="redirecionar_artigos()">
+          <span class="icon">📄</span>
+          <button>Artigos</button>
+        </li>
+        <li [class.active]="selectedItem === 'downloads'" (click)="redirecionar_downloads()">
+          <span class="icon">⬇️</span>
+          <button>Downloads</button>
+        </li>
+        <li [class.active]="selectedItem === 'ajuda'" (click)="redirecionar_ajuda()">
+          <span class="icon">❓</span>
+          <button>Ajuda</button>
+        </li>
+        <li [class.active]="selectedItem === 'perfil'" (click)="redirecionar_perfil()">
+          <span class="icon">👤</span>
+          <button>Perfil</button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+   

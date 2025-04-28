@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthInterceptor } from './auth.interceptor';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { InicionavbarComponent } from './inicionavbar/inicionavbar.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     HomeComponent,
     HttpClientModule, 
     FormsModule,
-    NavbarComponent
+    NavbarComponent,
+    InicionavbarComponent,
   ],
   providers: [ {
     provide: HTTP_INTERCEPTORS,
