@@ -1,0 +1,84 @@
+<h1>Painel Administrativo</h1>
+
+<div *ngIf="successMessage" class="success">{{ successMessage }}</div>
+<div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+<button (click)="logout()" class="logout-button">Sair</button>
+
+<hr />
+<h2>📝 Criar Nova Questão</h2>
+<form [formGroup]="questionForm" (ngSubmit)="submitQuestion()">
+  <input formControlName="question_text" placeholder="Enunciado da questão" />
+  <input formControlName="alternative_a" placeholder="Alternativa A" />
+  <input formControlName="alternative_b" placeholder="Alternativa B" />
+  <input formControlName="alternative_c" placeholder="Alternativa C" />
+  <input formControlName="alternative_d" placeholder="Alternativa D" />
+  <input formControlName="alternative_e" placeholder="Alternativa E" />
+  <input formControlName="correct_answer" placeholder="Resposta correta (A–E)" />
+  <button type="submit">{{ editingQuestion ? 'Salvar Alterações' : 'Criar Questão' }}</button>
+  <button *ngIf="editingQuestion" type="button" (click)="cancelEditQuestion()">Cancelar</button>
+</form>
+
+<div class="existing-section">
+  <h3>📋 Questões Existentes</h3>
+  <ul>
+    <li *ngFor="let q of questionsList">
+      {{ q.question_text }}
+      <button (click)="editQuestion(q)">Editar</button>
+      <button (click)="deleteQuestion(q.id)">Excluir</button>
+    </li>
+  </ul>
+</div>
+
+<hr />
+<h2>📚 {{ editingSimulado ? 'Editar Simulado' : 'Criar Novo Simulado' }}</h2>
+<form [formGroup]="simuladoForm" (ngSubmit)="submitSimulado()">
+  <input formControlName="titulo" placeholder="Título do Simulado" />
+
+  <!-- Se for criação -->
+  <div *ngIf="!editingSimulado">
+    <label>Selecione as questões:</label><br />
+    <div *ngFor="let q of questionsList">
+      <button type="button" (click)="addQuestion(q.id)">Adicionar</button>
+      {{ q.question_text }}
+    </div>
+  </div>
+
+  <!-- Se for edição -->
+  <div *ngIf="editingSimulado">
+    <h4>🗑 Questões já presentes</h4>
+    <div *ngIf="selectedQuestions.length; else vazio1">
+      <ul>
+        <li *ngFor="let q of selectedQuestions">
+          {{ q.question_text }}
+          <button type="button" (click)="removeQuestion(q.id)">Remover</button>
+        </li>
+      </ul>
+    </div>
+    <ng-template #vazio1><p>Nenhuma questão adicionada.</p></ng-template>
+
+    <h4 style="margin-top: 1em;">➕ Adicionar novas questões</h4>
+    <div *ngIf="availableQuestions.length; else vazio2">
+      <ul>
+        <li *ngFor="let q of availableQuestions">
+          {{ q.question_text }}
+          <button type="button" (click)="addQuestion(q.id)">Adicionar</button>
+        </li>
+      </ul>
+    </div>
+    <ng-template #vazio2><p>Nenhuma nova questão disponível.</p></ng-template>
+  </div>
+
+  <button type="submit">{{ editingSimulado ? 'Salvar Alterações' : 'Criar Simulado' }}</button>
+  <button *ngIf="editingSimulado" type="button" (click)="cancelEditSimulado()">Cancelar</button>
+</form>
+
+<div class="existing-section">
+  <h3>📋 Simulados Existentes</h3>
+  <ul>
+    <li *ngFor="let s of simuladosList">
+      {{ s.titulo }}
+      <button (click)="editSimulado(s)">Editar</button>
+      <button (click)="deleteSimulado(s.id)">Excluir</button>
+    </li>
+  </ul>
+</div>

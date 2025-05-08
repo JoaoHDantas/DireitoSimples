@@ -20,4 +20,7 @@ export class SimuladoService {
   getSimulados(): Observable<Simulado[]> {
     return this.http.get<Simulado[]>(this.apiUrl);
   }
+  getSimuladoById(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}${id}/`);
+  }
 }

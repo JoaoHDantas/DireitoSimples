@@ -10,10 +10,18 @@ class SimuladoSerializer(serializers.ModelSerializer):
         model = Simulado
         fields = ['id', 'titulo', 'descricao', 'criado_em', 'questoes']
 
+from direitoapp.models import Question  # Certifique-se que está importando isso
+
 class CriarSimuladoSerializer(serializers.ModelSerializer):
+    questoes = serializers.PrimaryKeyRelatedField(
+        queryset=Question.objects.all(),
+        many=True
+    )
+
     class Meta:
         model = Simulado
-        fields = ['id', 'titulo', 'descricao', 'questoes']
+        fields = ['id', 'titulo', 'questoes']
+
 
 class RespostaSerializer(serializers.ModelSerializer):
     questao = QuestionSerializer(read_only=True)

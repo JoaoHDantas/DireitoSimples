@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';  // Importar CommonModule
 import { FormsModule } from '@angular/forms';   // Importar FormsModule
 import { QuestionService } from '../question.service';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { SimuladoService } from './simulado.service'; // troque se o nome for outro
 
 @Component({
   selector: 'app-simulado',
@@ -17,11 +19,19 @@ export class SimuladoComponent implements OnInit {
   respostas: { [key: number]: string } = {};
   finalizado = false;
 
-  constructor(private questionService: QuestionService, private router: Router) {}
+  constructor(
+    private questionService: QuestionService, 
+    private router: Router,
+    private route: ActivatedRoute,
+    private simuladoService: SimuladoService,
+  
+
+  ) {}
 
   ngOnInit(): void {
-    this.questionService.getQuestions().subscribe((data) => {
-      this.questions = data;
+    const simuladoId = Number(this.route.snapshot.paramMap.get('id'));
+    this.simuladoService.getSimuladoById(simuladoId).subscribe((simulado) => {
+      this.questions = simulado.questoes;  // agora vem só as questões daquele simulado
     });
   }
 

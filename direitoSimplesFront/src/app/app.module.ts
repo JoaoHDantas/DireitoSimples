@@ -10,6 +10,10 @@ import { AuthInterceptor } from './auth.interceptor';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { InicionavbarComponent } from './inicionavbar/inicionavbar.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+
 
 @NgModule({
   declarations: [
@@ -25,6 +29,8 @@ import { InicionavbarComponent } from './inicionavbar/inicionavbar.component';
     FormsModule,
     NavbarComponent,
     InicionavbarComponent,
+    ReactiveFormsModule,
+    AdminLoginComponent,
   ],
   providers: [ {
     provide: HTTP_INTERCEPTORS,

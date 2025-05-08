@@ -1,4 +1,3 @@
-// src/app/home/home.component.ts
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from './home.service'; 
 import { CommonModule } from '@angular/common';

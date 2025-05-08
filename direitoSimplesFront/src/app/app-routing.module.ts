@@ -7,6 +7,11 @@ import { HomeComponent } from './home/home.component';
 import { QuestionComponent } from './question/question.component';
 import { SimuladoComponent } from './simulado/simulado.component';
 import { SimuladoListComponent } from './simulado/simulado-list/simulado-list.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { AdminAuthGuard } from './auth/admin-auth.guard';
+
+
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -16,6 +21,8 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'simulado/:id', component: SimuladoComponent},
   {path: 'simulados',component: SimuladoListComponent},
+  { path: 'admin', component: AdminPanelComponent, canActivate: [AdminAuthGuard]},
+  { path: 'admin/login', component: AdminLoginComponent },
 ];
 
 @NgModule({

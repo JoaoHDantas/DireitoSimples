@@ -17,15 +17,17 @@ class SimuladoViewSet(viewsets.ModelViewSet):
         if self.action in ['create', 'update', 'partial_update', 'destroy']:
             return [IsAuthenticated()]
         return [IsAuthenticated()]
-    # def get_permissions(self):
-    #     if self.action in ['create', 'update', 'partial_update', 'destroy']:
-    #         return [AllowAny()]
-    #     return [AllowAny()]
 
     def get_serializer_class(self):
         if self.action in ['create', 'update', 'partial_update']:
             return CriarSimuladoSerializer
         return SimuladoSerializer
+
+    def perform_create(self, serializer):
+        serializer.save()  # 'serializer' é o parâmetro da função
+
+    def perform_update(self, serializer):
+        serializer.save()
 
 class SimuladoRespondidoViewSet(viewsets.ModelViewSet):
     serializer_class = SimuladoRespondidoSerializer
