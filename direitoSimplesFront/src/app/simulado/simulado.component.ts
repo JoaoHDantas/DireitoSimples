@@ -67,4 +67,9 @@ export class SimuladoComponent implements OnInit {
     this.router.navigate(['/home/']);
   }
   
+  getProgress(): number {
+    if (this.questions.length === 0) return 0;
+    return Math.round(((this.currentQuestionIndex + 1) / this.questions.length) * 100);
+  }
+  
 }

@@ -86,4 +86,7 @@ export class QuestionComponent implements OnInit {
       document.exitFullscreen();
     }
   }
+  getProgress(): number {
+    return Math.round(((this.questionIndex + 1) / this.totalQuestions) * 100);
+  }
 }

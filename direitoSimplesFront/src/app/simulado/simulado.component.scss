@@ -16,9 +16,32 @@
   width: 120px;
 }
 
-.question-counter {
-  font-size: 1.1rem;
-  font-weight: 500;
+.progress-container {
+  position: relative;
+  width: 65%;
+  margin: 20px 0;
+}
+
+.progress-label {
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  top: -25px;
+}
+
+.progress-bar {
+  background-color: #3f528e;
+  border-radius: 10px;
+  height: 20px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background-color: #0b0f26;
+  height: 100%;
+  transition: width 0.3s ease-in-out;
+  border-radius: 10px;
 }
 
 .fullscreen-button {
