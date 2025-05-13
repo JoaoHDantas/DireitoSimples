@@ -1,3 +1,10 @@
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 10rem 0 10rem;
+}
+
 h1 {
     font-size: 2rem;
     text-align: center;
@@ -13,6 +20,7 @@ h1 {
     padding: 1.5rem;
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    width: 100%;
   }
   
   input[type="text"], input[type="checkbox"], input[formControlName] {
@@ -62,6 +70,7 @@ h1 {
     background: #f2f2f2;
     padding: 1rem;
     border-radius: 8px;
+    width: 100%;
   }
   
   .existing-section h3 {
@@ -96,6 +105,23 @@ h1 {
   .existing-section li button:hover {
     filter: brightness(0.95);
   }
+  
+  .existing-section input{
+    margin-bottom: 1rem;
+  }
+  .select-itens{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .pagination-controls{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    align-items: center;
+    gap: 1rem;
+  }
+
   .logout-button {
     float: right;
     margin-bottom: 1rem;

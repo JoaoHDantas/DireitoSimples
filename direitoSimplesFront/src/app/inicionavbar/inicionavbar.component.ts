@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
   selector: 'app-inicionavbar',
   standalone: true,
   templateUrl: './inicionavbar.component.html',
-  styleUrl: './inicionavbar.component.scss'
+  styleUrls: ['./inicionavbar.component.scss']
 })
 export class InicionavbarComponent {
   selectedItem: string = 'estudo-diario'; // Começa selecionado o estudo diário

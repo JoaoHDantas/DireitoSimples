@@ -1,13 +1,13 @@
 // src/app/admin-panel/admin-panel.component.ts
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-admin-panel',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, HttpClientModule],
+  imports: [CommonModule, ReactiveFormsModule, HttpClientModule, FormsModule],
   templateUrl: './admin-panel.component.html',
   styleUrls: ['./admin-panel.component.scss']
 })
@@ -20,8 +20,42 @@ export class AdminPanelComponent implements OnInit {
   editingQuestion: any = null;
   successMessage = '';
   errorMessage = '';
+  searchText: string = '';
+  currentPage: number = 1;
+  itemsPerPage: number = 2; // Quantidade de itens por página
+  totalPages: number = 1;
 
   constructor(private fb: FormBuilder, private http: HttpClient) {}
+
+  getPaginatedQuestions() {
+    const filteredQuestions = this.filteredQuestions();
+    this.totalPages = Math.ceil(filteredQuestions.length / this.itemsPerPage);
+    const start = (this.currentPage - 1) * this.itemsPerPage;
+    const end = start + this.itemsPerPage;
+    return filteredQuestions.slice(start, end);
+  }
+
+  // Função para ir para a página anterior
+  prevPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
+
+  // Função para ir para a próxima página
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+    }
+  }
+
+
+  filteredQuestions() {
+    if (!this.searchText) return this.questionsList;
+    return this.questionsList.filter(q =>
+      q.question_text.toLowerCase().includes(this.searchText.toLowerCase())
+    );
+  }
 
   ngOnInit(): void {
     this.initForms();

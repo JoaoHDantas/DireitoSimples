@@ -4,7 +4,8 @@ import { FormsModule } from '@angular/forms';   // Importar FormsModule
 import { QuestionService } from '../question.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import { SimuladoService } from './simulado.service'; // troque se o nome for outro
+import { SimuladoService } from './simulado.service';
+import { InicionavbarComponent } from "../inicionavbar/inicionavbar.component"; // troque se o nome for outro
 
 @Component({
   selector: 'app-simulado',
@@ -66,7 +67,7 @@ export class SimuladoComponent implements OnInit {
   voltarHome() {
     this.router.navigate(['/home/']);
   }
-  
+
   getProgress(): number {
     if (this.questions.length === 0) return 0;
     return Math.round(((this.currentQuestionIndex + 1) / this.questions.length) * 100);

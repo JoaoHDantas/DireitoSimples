@@ -14,7 +14,6 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
