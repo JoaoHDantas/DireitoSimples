@@ -62,8 +62,8 @@
     <div *ngIf="editingSimulado">
       <h4>🗑 Questões já presentes</h4>
       <div *ngIf="selectedQuestions.length; else vazio1">
-        <ul>
-          <li *ngFor="let q of selectedQuestions">
+        <ul class="itens_editar_simulado">
+          <li class="buttons_editar_simulado" *ngFor="let q of selectedQuestions">
             {{ q.question_text }}
             <button type="button" (click)="removeQuestion(q.id)">Remover</button>
           </li>
@@ -73,8 +73,8 @@
 
       <h4 style="margin-top: 1em;">➕ Adicionar novas questões</h4>
       <div *ngIf="availableQuestions.length; else vazio2">
-        <ul>
-          <li *ngFor="let q of availableQuestions">
+        <ul class="itens_editar_simulado">
+          <li class="buttons_editar_simulado" *ngFor="let q of availableQuestions">
             {{ q.question_text }}
             <button type="button" (click)="addQuestion(q.id)">Adicionar</button>
           </li>

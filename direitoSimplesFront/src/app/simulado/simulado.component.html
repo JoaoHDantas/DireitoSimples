@@ -1,5 +1,8 @@
-<div *ngIf="!finalizado" class="question-wrapper">
-  <div class="question-header">
+<div class="question-header">
+  <button class="submit-leave" (click)="voltarSimulado()">
+    <img src="/assets/icons/leave.svg" alt="">
+  </button>
+  <nav class="itens-meio">
     <img src="/assets/img/corujadireito.png" alt="Coruja Advogada" class="mascot" />
     <div class="progress-container">
       <span class="progress-label">{{ getProgress() }}%</span>
@@ -7,10 +10,12 @@
         <div class="progress-fill" [style.width.%]="getProgress()"></div>
       </div>
     </div>
-    <button class="fullscreen-button" (click)="toggleFullscreen()" aria-label="Tela cheia">
-      <img src="/assets/icons/telacheia.svg" alt="Tela cheia" />
-    </button>
-  </div>
+  </nav>
+  <button class="fullscreen-button" (click)="toggleFullscreen()" aria-label="Tela cheia">
+    <img src="/assets/icons/telacheia.svg" alt="Tela cheia" />
+  </button>
+</div>
+<div *ngIf="!finalizado" class="question-wrapper">
 
   <h1 class="question-text">{{ questions[currentQuestionIndex]?.question_text }}</h1>
 
