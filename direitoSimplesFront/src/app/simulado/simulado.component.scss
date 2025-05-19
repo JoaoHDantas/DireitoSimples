@@ -121,6 +121,18 @@
   margin-top: 2rem;
 }
 
+.left {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .skip {
   background: #1a2e5a;
   color: white;

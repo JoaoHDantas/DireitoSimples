@@ -7,42 +7,44 @@
 
   <hr />
   <h2>📝 Criar Nova Questão</h2>
-  <form [formGroup]="questionForm" (ngSubmit)="submitQuestion()">
-    <input formControlName="question_text" placeholder="Enunciado da questão" />
-    <input formControlName="alternative_a" placeholder="Alternativa A" />
-    <input formControlName="alternative_b" placeholder="Alternativa B" />
-    <input formControlName="alternative_c" placeholder="Alternativa C" />
-    <input formControlName="alternative_d" placeholder="Alternativa D" />
-    <input formControlName="alternative_e" placeholder="Alternativa E" />
-    <input formControlName="correct_answer" placeholder="Resposta correta (A–E)" />
-    <button type="submit">{{ editingQuestion ? 'Salvar Alterações' : 'Criar Questão' }}</button>
-    <button *ngIf="editingQuestion" type="button" (click)="cancelEditQuestion()">Cancelar</button>
-  </form>
-
-  <div class="existing-section">
-    <h3>📋 Questões Existentes</h3>
+  <section class="question-section">
+    <form [formGroup]="questionForm" (ngSubmit)="submitQuestion()">
+      <input formControlName="question_text" placeholder="Enunciado da questão" />
+      <input formControlName="alternative_a" placeholder="Alternativa A" />
+      <input formControlName="alternative_b" placeholder="Alternativa B" />
+      <input formControlName="alternative_c" placeholder="Alternativa C" />
+      <input formControlName="alternative_d" placeholder="Alternativa D" />
+      <input formControlName="alternative_e" placeholder="Alternativa E" />
+      <input formControlName="correct_answer" placeholder="Resposta correta (A–E)" />
+      <button type="submit">{{ editingQuestion ? 'Salvar Alterações' : 'Criar Questão' }}</button>
+      <button *ngIf="editingQuestion" type="button" (click)="cancelEditQuestion()">Cancelar</button>
+    </form>
   
-    <!-- Barra de busca -->
-    <input type="text" placeholder="Buscar questão..." [(ngModel)]="searchText" />
-  
-    <!-- Lista de questões paginada -->
-    <ul>
-      <li *ngFor="let q of getPaginatedQuestions()">
-        {{ q.question_text }}
-        <div>
-          <button (click)="editQuestion(q)">Editar</button>
-          <button (click)="deleteQuestion(q.id)">Excluir</button>
-        </div>
-      </li>
-    </ul>
-  
-    <!-- Controles de paginação -->
-    <div class="pagination-controls">
-      <button (click)="prevPage()" [disabled]="currentPage === 1">Anterior</button>
-      <span>Página {{ currentPage }} de {{ totalPages }}</span>
-      <button (click)="nextPage()" [disabled]="currentPage === totalPages">Próxima</button>
+    <div class="existing-section">
+      <h3>📋 Questões Existentes</h3>
+    
+      <!-- Barra de busca -->
+      <input type="text" placeholder="Buscar questão..." [(ngModel)]="searchText" />
+    
+      <!-- Lista de questões paginada -->
+      <ul>
+        <li *ngFor="let q of getPaginatedQuestions()">
+          {{ q.question_text }}
+          <div class="editar-excluir">
+            <button (click)="editQuestion(q)">Editar</button>
+            <button (click)="deleteQuestion(q.id)">Excluir</button>
+          </div>
+        </li>
+      </ul>
+    
+      <!-- Controles de paginação -->
+      <div class="pagination-controls">
+        <button (click)="prevPage()" [disabled]="currentPage === 1">Anterior</button>
+        <span>Página {{ currentPage }} de {{ totalPages }}</span>
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages">Próxima</button>
+      </div>
     </div>
-  </div>
+  </section>
 
   <hr />
   <h2>📚 {{ editingSimulado ? 'Editar Simulado' : 'Criar Novo Simulado' }}</h2>

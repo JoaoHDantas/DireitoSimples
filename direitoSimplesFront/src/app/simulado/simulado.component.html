@@ -1,4 +1,4 @@
-<div class="question-header">
+<div *ngIf="!finalizado" class="question-header">
   <button class="submit-leave" (click)="voltarSimulado()">
     <img src="/assets/icons/leave.svg" alt="">
   </button>
@@ -32,10 +32,18 @@
     </div>
   </div>
 
-  <div class="question-footer">
-    <button class="skip" (click)="irPara(currentQuestionIndex - 1)" [disabled]="currentQuestionIndex === 0">Anterior</button>
-    <button class="skip" (click)="irPara(currentQuestionIndex + 1)" [disabled]="currentQuestionIndex === questions.length - 1">Próxima</button>
+<div class="question-footer">
+  <div class="left">
+    <button class="skip" (click)="irPara(currentQuestionIndex - 1)" *ngIf="currentQuestionIndex > 0">
+      Anterior
+    </button>
   </div>
+  <div class="right">
+    <button class="skip" (click)="irPara(currentQuestionIndex + 1)" *ngIf="currentQuestionIndex < questions.length - 1">
+      Próxima
+    </button>
+  </div>
+</div>
 
   <div style="text-align: right; margin-top: 1rem;">
     <button *ngIf="currentQuestionIndex === questions.length - 1"

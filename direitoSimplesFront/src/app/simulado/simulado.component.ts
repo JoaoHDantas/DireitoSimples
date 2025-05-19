@@ -74,7 +74,7 @@ export class SimuladoComponent implements OnInit {
 
   getProgress(): number {
     if (this.questions.length === 0) return 0;
-    return Math.round(((this.currentQuestionIndex + 1) / this.questions.length) * 100);
+    return Math.round(((this.currentQuestionIndex) / this.questions.length) * 100);
   }
   
 }
