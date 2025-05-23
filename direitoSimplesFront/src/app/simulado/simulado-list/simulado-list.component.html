@@ -1,18 +1,59 @@
-
 <section class="section-simulado-list">
   <app-inicionavbar></app-inicionavbar>
+
   <div class="simulados-container">
-    <h2>Simulados Disponíveis</h2>
-  
+    <h2 class="titulo">📚 Simulados Disponíveis</h2>
+
+    <!-- 🔥 Barra de Progresso Elegante -->
+    <div class="progresso-wrapper">
+      <div class="progresso-label">
+        <span>Progresso de simulados</span>
+        <span>{{ percentualProgresso }}%</span>
+      </div>
+      <div class="progresso-barra">
+        <div
+          class="progresso-preenchido"
+          [style.width.%]="percentualProgresso"
+        ></div>
+      </div>
+    </div>
+
+    <!-- 🔥 Lista dos simulados -->
     <ul class="simulados-list">
       <li *ngFor="let simulado of simulados">
         <div class="simulado-card">
-          <h3>{{ simulado.titulo }}</h3>
-          <p>{{ simulado.descricao }}</p>
-          <a [routerLink]="['/simulado', simulado.id]">Iniciar</a>
+          <div class="conteudo">
+            <h3>{{ simulado.titulo }}</h3>
+            <p>{{ simulado.descricao }}</p>
+          </div>
+
+          <div class="acoes">
+            <button
+              *ngIf="!simulado.concluido"
+              class="btn-iniciar"
+              (click)="iniciarSimulado(simulado.id)"
+            >
+              ▶️ Iniciar
+            </button>
+
+            <button
+              *ngIf="simulado.concluido"
+              class="btn-concluido"
+              disabled
+            >
+              ✔️ Concluído
+            </button>
+
+            <button
+              *ngIf="simulado.concluido"
+              class="btn-refazer"
+              (click)="iniciarSimulado(simulado.id)"
+            >
+              🔄 Refazer
+            </button>
+          </div>
         </div>
       </li>
     </ul>
   </div>
-  
 </section>

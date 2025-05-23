@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { QuestionService } from '../question.service';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router'; // <-- IMPORTA O Router
+import { EstudoDiarioService } from '../estudodiario/estudodiario.service';
+
+
 
 @Component({
   selector: 'app-question',
@@ -17,27 +20,18 @@ export class QuestionComponent implements OnInit {
   selectedAnswer: string = '';
   feedback: any;
 
-  questionsList: any[] = [];
-  questionIndex: number = 0;
-  totalQuestions: number = 0;
-
   constructor(
     private route: ActivatedRoute,
-    private questionService: QuestionService
+    private questionService: QuestionService,
+    private estudoDiarioService: EstudoDiarioService,
+    private router: Router,  
+
   ) {}
 
   ngOnInit(): void {
-    this.questionService.getQuestions().subscribe((data: any[]) => {
-      this.questionsList = data;
-      this.totalQuestions = data.length;
-
-      this.route.params.subscribe(params => {
-        const paramId = +params['id'];
-        const index = this.questionsList.findIndex(q => q.id === paramId);
-        this.questionIndex = index !== -1 ? index : 0;
-        this.questionId = this.questionsList[this.questionIndex].id;
-        this.loadQuestion();
-      });
+    this.route.params.subscribe(params => {
+      this.questionId = +params['id'];
+      this.loadQuestion();
     });
   }
 
@@ -52,41 +46,31 @@ export class QuestionComponent implements OnInit {
   selectAnswer(letter: string) {
     this.selectedAnswer = letter;
   }
-
   submitAnswer(): void {
-    const answerPayload = { [this.questionId]: this.selectedAnswer };
-    this.questionService.submitAnswers(answerPayload).subscribe(res => {
-      this.feedback = res.find((f: any) => f.question_id == this.questionId);
+  const answerPayload = { [this.questionId]: this.selectedAnswer };
+
+  this.questionService.submitAnswers(answerPayload).subscribe(res => {
+    this.feedback = res.find((f: any) => f.question_id == this.questionId);
+
+    // 🔥 Atualiza o estudo diário
+    this.estudoDiarioService.responder({
+      questao_id: this.questionId,
+      resposta: this.selectedAnswer
+    }).subscribe({
+      next: (res) => {
+        console.log('Estudo diário atualizado', res);
+      },
+      error: (err) => {
+        console.error('Erro ao atualizar estudo diário', err);
+      }
     });
-  }
 
-  skipQuestion(): void {
-    if (this.questionIndex < this.totalQuestions - 1) {
-      this.questionIndex++;
-      this.questionId = this.questionsList[this.questionIndex].id;
-      this.loadQuestion();
-    }
-  }
+  });
+}
+voltarEstudoDiario() {
+  this.router.navigate(['/estudo-diario']);
+}
 
-  goToPreviousQuestion(): void {
-    if (this.questionIndex > 0) {
-      this.questionIndex--;
-      this.questionId = this.questionsList[this.questionIndex].id;
-      this.loadQuestion();
-    }
-  }
-  toggleFullscreen() {
-    const elem = document.documentElement;
-  
-    if (!document.fullscreenElement) {
-      elem.requestFullscreen().catch((err) => {
-        console.error(`Erro ao tentar ativar o modo tela cheia: ${err.message}`);
-      });
-    } else {
-      document.exitFullscreen();
-    }
-  }
-  getProgress(): number {
-    return Math.round(((this.questionIndex + 1) / this.totalQuestions) * 100);
-  }
+
+
 }

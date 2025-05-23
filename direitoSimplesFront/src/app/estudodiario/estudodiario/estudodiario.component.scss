@@ -1,0 +1,73 @@
+.estudo-diario {
+  text-align: center;
+  margin: 50px;
+
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+
+  .caminho {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    position: relative;
+  }
+
+  .etapa {
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+
+    .linha {
+      height: 4px;
+      background: #97a1b1;
+      width: 60px;
+      position: absolute;
+      left: -60px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 0;
+    }
+
+    .icone {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #aab2bd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transition: background-color 0.3s ease;
+    }
+
+    .circulo {
+      width: 20px;
+      height: 20px;
+      background-color: #1e40af;
+      border-radius: 50%;
+      box-shadow: 0 0 15px #3f83f8;
+    }
+
+    .cadeado {
+      font-size: 1.4rem;
+    }
+
+    &.ativa {
+      .icone {
+        background-color: #3f83f8;
+        box-shadow: 0 0 10px #3f83f8;
+      }
+    }
+  }
+
+  .finalizado {
+    margin-top: 30px;
+    font-weight: bold;
+    color: green;
+    font-size: 1.2rem;
+  }
+}

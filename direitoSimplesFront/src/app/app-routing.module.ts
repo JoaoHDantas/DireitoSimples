@@ -10,6 +10,9 @@ import { SimuladoListComponent } from './simulado/simulado-list/simulado-list.co
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminAuthGuard } from './auth/admin-auth.guard';
+import { ConquistasComponent } from './gamificacao/conquistas.component';
+import { EstudoDiarioComponent } from './estudodiario/estudodiario/estudodiario.component';
+
 
 
 
@@ -23,6 +26,10 @@ const routes: Routes = [
   {path: 'simulados',component: SimuladoListComponent},
   { path: 'admin', component: AdminPanelComponent, canActivate: [AdminAuthGuard]},
   { path: 'admin/login', component: AdminLoginComponent },
+  { path: 'conquistas', component: ConquistasComponent },
+  { path: 'estudo-diario', component: EstudoDiarioComponent },
+
+
 ];
 
 @NgModule({

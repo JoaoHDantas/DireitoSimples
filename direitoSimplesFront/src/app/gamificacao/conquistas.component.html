@@ -1,0 +1,34 @@
+<section class="section-conquistas">
+  <app-inicionavbar></app-inicionavbar>
+
+  <div class="conteudo-conquistas">
+    <h2 class="titulo">🏆 Suas Conquistas</h2>
+
+    <div class="painel-info">
+      <p><strong>Pontuação atual:</strong> {{ pontos }} pts</p>
+    </div>
+
+    <div class="conquistas-grid">
+      <div
+        *ngFor="let c of conquistas"
+        class="conquista-card"
+        [class.conquistada]="c.conquistada"
+      >
+        <div class="icone">
+          {{ c.conquistada ? '🏆' : '🔒' }}
+        </div>
+
+        <div class="descricao">
+          {{ c.nome }}
+          <small>{{ c.descricao }}</small>
+        </div>
+
+        <div class="pontos">
+          {{ c.pontos_necessarios }} pts
+        </div>
+
+        <div *ngIf="c.conquistada" class="badge">✔️</div>
+      </div>
+    </div>
+  </div>
+</section>

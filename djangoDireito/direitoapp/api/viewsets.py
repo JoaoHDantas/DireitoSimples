@@ -8,6 +8,10 @@ from direitoapp.models import CustomUser, Question
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated 
 from .serializers import UserSerializer, LoginSerializer, HomepageSerializer, QuestionSerializer
+from gamificacao.utils import adicionar_pontos
+from gamificacao.utils import login_diario
+
+
 
 class RegisterViewSet(viewsets.ModelViewSet):
     queryset = CustomUser.objects.all()
@@ -35,11 +39,11 @@ class LoginViewSet(viewsets.ViewSet):
     def create(self, request):
         serializer = LoginSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        user = serializer.validated_data['user']  # Pega o usuário validado
-
-        # Gerar o refresh token e access token
+        user = serializer.validated_data['user']
         refresh = RefreshToken.for_user(user)
         access_token = refresh.access_token
+        login_diario(user)
+
 
         return Response({
             'refresh': str(refresh),
@@ -79,7 +83,7 @@ class QuestionViewSet(viewsets.ModelViewSet):
     def submit_answers(self, request):
         answers = request.data
         response_data = []
-
+        adicionar_pontos(request.user, 1)
         for question_id, answer in answers.items():
             try:
                 question = Question.objects.get(id=question_id)

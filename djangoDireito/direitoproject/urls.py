@@ -3,6 +3,7 @@ from django.urls import path, include
 from direitoapp.api.router import router as direito_router
 from inicioapp.api.router import router as simulado_router
 from adminpainel.api.router import admin_router as admin_router
+from estudodiario.api.router import router as estudo_router
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
@@ -29,5 +30,8 @@ urlpatterns = [
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('api/admin/', include(admin_router.urls)),
+    path('api/gamificacao/', include('gamificacao.api.router')),
+    path('api/', include(estudo_router.urls)),
+
 
 ]

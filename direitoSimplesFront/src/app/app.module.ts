@@ -33,8 +33,8 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
   ],
   providers: [ {
     provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi: true  // Permitindo múltiplos interceptores
+    useClass:AuthInterceptor,
+    multi: true
   }],
   bootstrap: [AppComponent]
 })

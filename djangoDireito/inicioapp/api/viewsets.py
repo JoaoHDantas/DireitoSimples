@@ -9,6 +9,20 @@ from .serializers import (
     SimuladoRespondidoSerializer, RespostaSerializer
 )
 from direitoapp.models import Question
+from gamificacao.utils import adicionar_pontos
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.exceptions import NotFound
+
+
+from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import action
+from rest_framework.response import Response
+
+from inicioapp.models import Simulado, SimuladoRespondido
+from .serializers import SimuladoSerializer, CriarSimuladoSerializer
+
 
 class SimuladoViewSet(viewsets.ModelViewSet):
     queryset = Simulado.objects.all()
@@ -24,10 +38,33 @@ class SimuladoViewSet(viewsets.ModelViewSet):
         return SimuladoSerializer
 
     def perform_create(self, serializer):
-        serializer.save()  # 'serializer' é o parâmetro da função
+        serializer.save()
 
     def perform_update(self, serializer):
         serializer.save()
+
+    @action(detail=False, methods=['get'], permission_classes=[IsAuthenticated])
+    def meus_simulados(self, request):
+        usuario = request.user
+        simulados = Simulado.objects.all()
+
+        data = []
+        for simulado in simulados:
+            concluido = SimuladoRespondido.objects.filter(
+                simulado=simulado,
+                usuario=usuario,
+                finalizado=True
+            ).exists()
+
+            data.append({
+                'id': simulado.id,
+                'titulo': simulado.titulo,
+                'descricao': simulado.descricao,
+                'concluido': concluido
+            })
+
+        return Response(data)
+
 
 class SimuladoRespondidoViewSet(viewsets.ModelViewSet):
     serializer_class = SimuladoRespondidoSerializer
@@ -38,9 +75,11 @@ class SimuladoRespondidoViewSet(viewsets.ModelViewSet):
 
     def create(self, request):
         simulado_id = request.data.get('simulado_id')
-        simulado = Simulado.objects.get(id=simulado_id)
+        try:
+            simulado = Simulado.objects.get(id=simulado_id)
+        except Simulado.DoesNotExist:
+            raise NotFound(detail="Simulado não encontrado.")
 
-        # Criar novo simulado respondido
         simulado_respondido = SimuladoRespondido.objects.create(
             simulado=simulado,
             usuario=request.user
@@ -54,7 +93,7 @@ class SimuladoRespondidoViewSet(viewsets.ModelViewSet):
         questao_id = request.data.get('questao_id')
         resposta_usuario = request.data.get('resposta_usuario')
 
-        resposta, created = Resposta.objects.update_or_create(
+        resposta, _ = Resposta.objects.update_or_create(
             simulado_respondido=simulado_resp,
             questao_id=questao_id,
             defaults={'resposta_usuario': resposta_usuario}
@@ -79,4 +118,22 @@ class SimuladoRespondidoViewSet(viewsets.ModelViewSet):
                 'acertou': resposta.resposta_usuario == correta
             })
 
-        return Response({'resultados': resultados})
+        acertos = sum(1 for r in resultados if r['acertou'])
+        total = len(resultados)
+        percentual = (acertos / total) if total else 0
+
+        # 🔥 Se quiser proporcional:
+        pontos = round(percentual * 10)
+
+        # 🔥 Se quiser fixo (independente do acerto):
+        # pontos = 10
+
+        adicionar_pontos(request.user, pontos)
+
+        return Response({
+            'resultados': resultados,
+            'acertos': acertos,
+            'total': total,
+            'percentual': percentual,
+            'pontos_ganhos': pontos
+        })

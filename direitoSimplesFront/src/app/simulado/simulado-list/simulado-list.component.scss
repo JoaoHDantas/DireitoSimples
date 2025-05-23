@@ -1,57 +1,116 @@
-.section-simulado-list{
+/* 🔥 Progresso minimalista e elegante */
+.progresso-wrapper {
+  margin-bottom: 25px;
+}
+
+.progresso-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #d1d5db;
+  margin-bottom: 6px;
+}
+
+.progresso-barra {
+  width: 100%;
+  height: 10px;
+  background-color: #1e293b;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progresso-preenchido {
+  height: 100%;
+  background: linear-gradient(to right, #3b82f6, #2563eb);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+/* 🔥 Mantendo seu CSS original e adicionando os botões */
+.section-simulado-list {
   display: flex;
 }
+
 .simulados-container {
-    max-width: 800px;
-    margin: 40px 0 0 30%;
-    padding: 20px;
-    font-family: 'Poppins', sans-serif;
-    color: #fff;
-    width: 60%;
-  }
-  
-  h2 {
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  
-  .simulados-list {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .simulado-card {
-    background: linear-gradient(90deg, #0A142F, #3E5286);
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 0 8px rgba(0,0,0,0.2);
-  }
-  
-  .simulado-card h3 {
-    margin-bottom: 8px;
-    color: white;
-  }
-  
-  .simulado-card p {
-    margin-bottom: 16px;
-    color: white;
-  }
-  
-  .simulado-card a {
-    display: inline-block;
-    padding: 8px 16px;
-    background-color: #3f83f8;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: 500;
-    transition: background-color 0.3s ease;
-  }
-  
-  .simulado-card a:hover {
-    background-color: #1e40af;
-  }
-  
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  width: 60%;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.simulados-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.simulado-card {
+  background: linear-gradient(90deg, #0A142F, #3E5286);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.simulado-card h3 {
+  margin-bottom: 8px;
+  color: white;
+}
+
+.simulado-card p {
+  margin-bottom: 16px;
+  color: white;
+}
+
+.acoes {
+  display: flex;
+  gap: 10px;
+}
+
+.acoes button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.acoes button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.btn-iniciar {
+  background-color: #3f83f8;
+  color: white;
+}
+
+.btn-iniciar:hover {
+  background-color: #1e40af;
+}
+
+.btn-concluido {
+  background-color: #22c55e;
+  color: white;
+}
+
+.btn-refazer {
+  background-color: #f59e0b;
+  color: white;
+}
+
+.btn-refazer:hover {
+  background-color: #d97706;
+}
