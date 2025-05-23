@@ -26,18 +26,19 @@
   transition: width 0.4s ease;
 }
 
-/* 🔥 Mantendo seu CSS original e adicionando os botões */
+
 .section-simulado-list {
   display: flex;
+  justify-content: center;
 }
 
 .simulados-container {
   max-width: 800px;
-  margin: 40px auto;
   padding: 20px;
   font-family: 'Poppins', sans-serif;
   color: #fff;
-  width: 60%;
+  width: 50%;
+
 }
 
 h2 {
@@ -57,11 +58,30 @@ h2 {
   background: linear-gradient(90deg, #0A142F, #3E5286);
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 0.6s ease;
 }
+
+.simulado-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 .simulado-card h3 {
   margin-bottom: 8px;

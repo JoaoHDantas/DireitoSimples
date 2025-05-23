@@ -1,0 +1,20 @@
+.caixa_pontos{
+    max-width: 13rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+    background-color: #EFEFEF;
+    align-items: center;
+    padding: 1.5rem;
+    position: fixed;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+#p0{
+    padding-bottom: 1rem;
+}
+#p1{
+    font-size: 0.8rem;
+    color: #000;
+}

@@ -1,15 +1,14 @@
 <nav class="navbar">
     <div class="logo">
-      <h1>Estudando</h1>
-      <h1>Direito</h1>
+      <h1>Sagui</h1>
     </div>
   
     <div class="menu-central">
       <ng-container *ngIf="authService.isLoggedIn()">
+        <a routerLink="/estudo-diario">Estudo Diário</a>
         <a routerLink="/simulados">Simulados</a>
-        <a href="#">Downloads</a>
-        <a href="#">Ajuda</a>
-        <a href="#">Caminho Diário</a>
+        <a routerLink="#">Downloads</a>
+        <a routerLink="#">Ajuda</a>
       </ng-container>
     </div>
   

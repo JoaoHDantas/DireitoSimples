@@ -1,15 +1,16 @@
+<app-inicionavbar></app-inicionavbar>
+<div class="main-section">
 <section class="estudo-diario">
   <h2>📑 Estudo Diário</h2>
-
+  
   <div class="caminho">
     <div
-      class="etapa"
-      *ngFor="let etapa of etapas; let i = index"
-      [class.ativa]="i <= etapaAtual"
-      (click)="iniciarEtapa(i)"
+    class="etapa"
+    *ngFor="let etapa of etapas; let i = index"
+    [class.ativa]="i <= etapaAtual"
+    (click)="iniciarEtapa(i)"
     >
-      <div class="linha" *ngIf="i > 0"></div>
-
+    
       <div class="icone">
         <ng-container *ngIf="i <= etapaAtual; else cadeado">
           <div class="circulo"></div>
@@ -20,8 +21,9 @@
       </div>
     </div>
   </div>
-
   <div *ngIf="finalizado" class="finalizado">
     ✅ Estudo diário concluído hoje!
   </div>
 </section>
+<app-pontuacao></app-pontuacao>
+</div>

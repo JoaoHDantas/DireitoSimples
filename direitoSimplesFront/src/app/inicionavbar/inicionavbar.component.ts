@@ -12,9 +12,14 @@ export class InicionavbarComponent {
 
   constructor(private router: Router) {}
 
+  redirecionar_home() {
+    this.selectedItem = 'home';
+    this.router.navigate(['/home']);
+  }
+
   redirecionar_estudodiario() {
     this.selectedItem = 'estudo-diario';
-    this.router.navigate(['/home']);
+    this.router.navigate(['/estudo-diario']);
   }
 
   redirecionar_simulados() {

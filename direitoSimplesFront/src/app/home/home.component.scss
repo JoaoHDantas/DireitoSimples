@@ -4,11 +4,18 @@ a{
     text-decoration: none;
 }
 .homecontainer {
-    background: linear-gradient(90deg,#0A142F, #3E5286);
     width: 100%;
     height: 37rem;
     display: flex;
     justify-content: center;
+
+    background-color: #0A142F; /* Cor base */
+    background-image: 
+        url('/assets/img/bolinhas.png'),
+        linear-gradient(90deg, #0A142F, #3E5286);
+    background-repeat: no-repeat;
+    background-size: 30% 100%, 100% 100%;
+    background-position: right;
 }
 .infohomecontainer h1 , p{
     color: white;
@@ -23,9 +30,10 @@ a{
 
 }
 .img-coruja{
-    margin-top: 8rem;
-    width: 12rem;
-    height: 12rem;
+    margin-top: 3rem;
+    width: 20rem;
+    height: 20rem;
+    transform: scaleX(-1);
 }
 .questao{
     width: 28rem;

@@ -13,6 +13,7 @@ import { InicionavbarComponent } from './inicionavbar/inicionavbar.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { PontuacaoComponent } from './pontuacao/pontuacao.component';
 
 @NgModule({
   declarations: [
@@ -21,16 +22,17 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    LoginComponent,   
+    LoginComponent,
     RegisterComponent,
     HomeComponent,
-    HttpClientModule, 
+    HttpClientModule,
     FormsModule,
     NavbarComponent,
     InicionavbarComponent,
     ReactiveFormsModule,
     AdminLoginComponent,
-  ],
+    PontuacaoComponent
+],
   providers: [ {
     provide: HTTP_INTERCEPTORS,
     useClass:AuthInterceptor,

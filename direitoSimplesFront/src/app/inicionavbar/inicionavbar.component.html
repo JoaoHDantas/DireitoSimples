@@ -1,33 +1,33 @@
 <div class="inicionavbar">
     <nav>
-      <h1>Estudando<br>Direito</h1>
+      <h1 (click)="redirecionar_home()">Sagui</h1>
       <ul>
         <li [class.active]="selectedItem === 'estudo-diario'" (click)="redirecionar_estudodiario()">
-          <span class="icon">📔</span>
+          <img src="/assets/icons/estudo-diario.svg" alt="">
           <button>Estudo diário</button>
         </li>
         <li [class.active]="selectedItem === 'simulados'" (click)="redirecionar_simulados()">
-          <span class="icon">🎯</span>
+          <img src="/assets/icons/simulado.svg" alt="">
           <button>Simulados</button>
         </li>
         <li [class.active]="selectedItem === 'conquistas'" (click)="redirecionar_conquistas()">
-          <span class="icon">🏆</span>
+          <img src="/assets/icons/conquistas.svg" alt="">
           <button>Conquistas</button>
         </li>
         <li [class.active]="selectedItem === 'artigos'" (click)="redirecionar_artigos()">
-          <span class="icon">📄</span>
+          <img src="/assets/icons/artigos.svg" alt="">
           <button>Artigos</button>
         </li>
         <li [class.active]="selectedItem === 'downloads'" (click)="redirecionar_downloads()">
-          <span class="icon">⬇️</span>
+          <img src="/assets/icons/downloads.svg" alt="">
           <button>Downloads</button>
         </li>
         <li [class.active]="selectedItem === 'ajuda'" (click)="redirecionar_ajuda()">
-          <span class="icon">❓</span>
+          <img src="/assets/icons/ajuda.svg" alt="">
           <button>Ajuda</button>
         </li>
         <li [class.active]="selectedItem === 'perfil'" (click)="redirecionar_perfil()">
-          <span class="icon">👤</span>
+          <img src="/assets/icons/perfil.svg" alt="">
           <button>Perfil</button>
         </li>
       </ul>

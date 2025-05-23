@@ -114,10 +114,12 @@ WSGI_APPLICATION = 'direitoproject.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+# 'ENGINE': 'django.db.backends.postgresql',
+# 'ENGINE': 'django.db.backends.mysql',
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': env('DB_NAME'),
         'USER': env('DB_USER'),
         'PASSWORD': env('DB_PASSWORD'),

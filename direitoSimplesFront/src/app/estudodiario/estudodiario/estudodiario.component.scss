@@ -1,18 +1,39 @@
+.main-section{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+section{
+  padding: 24px
+}
 .estudo-diario {
   text-align: center;
-  margin: 50px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-right: 40px;
+  background-color: #EFEFEF;
+  margin-top: 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
 
   h2 {
-    font-size: 1.8rem;
+    font-size: 1.2rem;
     margin-bottom: 30px;
   }
 
   .caminho {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 40px;
+    gap: 30px;
     position: relative;
+    width: 13rem;
+    background-image: url('/assets/icons/linhas.png');
+    background-repeat: no-repeat;
+    background-size: 99% 90%;
+    background-position: center;
   }
 
   .etapa {
@@ -21,16 +42,16 @@
     position: relative;
     cursor: pointer;
 
-    .linha {
-      height: 4px;
-      background: #97a1b1;
-      width: 60px;
-      position: absolute;
-      left: -60px;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 0;
-    }
+    // .linha {
+    //   height: 4px;
+    //   background: #97a1b1;
+    //   width: 60px;
+    //   position: absolute;
+    //   left: -60px;
+    //   top: 50%;
+    //   transform: translateY(-50%);
+    //   z-index: 0;
+    // }
 
     .icone {
       width: 60px;
@@ -68,6 +89,13 @@
     margin-top: 30px;
     font-weight: bold;
     color: green;
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
+}
+.etapa:nth-child(odd) {
+  align-self: flex-start;
+}
+
+.etapa:nth-child(even) {
+  align-self: flex-end;
 }

@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EstudoDiarioService } from '../estudodiario.service';
 import { CommonModule } from '@angular/common';
+import { InicionavbarComponent } from '../../inicionavbar/inicionavbar.component';
+import { PontuacaoComponent } from '../../pontuacao/pontuacao.component';
+
 
 @Component({
   selector: 'app-estudo-diario',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,InicionavbarComponent, PontuacaoComponent],
   templateUrl: './estudodiario.component.html',
   styleUrls: ['./estudodiario.component.scss'],
 })

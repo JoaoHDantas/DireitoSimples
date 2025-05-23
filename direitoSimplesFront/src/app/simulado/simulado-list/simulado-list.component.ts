@@ -3,11 +3,12 @@ import { SimuladoService } from '../simulado.service';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { InicionavbarComponent } from '../../inicionavbar/inicionavbar.component';
+import { PontuacaoComponent } from '../../pontuacao/pontuacao.component';
 
 @Component({
   selector: 'app-simulado-list',
   standalone: true,
-  imports: [CommonModule, RouterModule, InicionavbarComponent],
+  imports: [CommonModule, RouterModule, InicionavbarComponent, PontuacaoComponent],
   templateUrl: './simulado-list.component.html',
   styleUrls: ['./simulado-list.component.scss']
 })
