@@ -48,6 +48,7 @@
 
   <hr />
   <h2>📚 {{ editingSimulado ? 'Editar Simulado' : 'Criar Novo Simulado' }}</h2>
+  <section class="simulado_section">
   <form [formGroup]="simuladoForm" (ngSubmit)="submitSimulado()">
     <input formControlName="titulo" placeholder="Título do Simulado" />
 
@@ -101,4 +102,5 @@
       </li>
     </ul>
   </div>
+</section>
 </main>

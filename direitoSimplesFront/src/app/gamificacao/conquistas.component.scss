@@ -53,6 +53,7 @@
   box-shadow: 0 6px 18px rgba(0,0,0,0.35);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   min-height: 150px;
+  max-width: 10rem;
 }
 
 .conquista-card.conquistada {
