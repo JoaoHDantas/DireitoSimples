@@ -1,9 +1,9 @@
 <div *ngIf="!finalizado" class="question-header">
-  <button class="submit-leave" (click)="voltarSimulado()">
-    <img src="/assets/icons/leave.svg" alt="">
+    <button class="fullscreen-button" (click)="toggleFullscreen()" aria-label="Tela cheia">
+    <img src="/assets/icons/telacheia.svg" alt="Tela cheia" />
   </button>
   <nav class="itens-meio">
-    <img src="/assets/img/corujadireito.png" alt="Coruja Advogada" class="mascot" />
+   
     <div class="progress-container">
       <span class="progress-label">{{ getProgress() }}%</span>
       <div class="progress-bar">
@@ -11,8 +11,8 @@
       </div>
     </div>
   </nav>
-  <button class="fullscreen-button" (click)="toggleFullscreen()" aria-label="Tela cheia">
-    <img src="/assets/icons/telacheia.svg" alt="Tela cheia" />
+  <button class="submit-leave" (click)="voltarSimulado()">
+    <img src="/assets/icons/leave.svg" alt="">
   </button>
 </div>
 <div *ngIf="!finalizado" class="question-wrapper">
@@ -54,7 +54,7 @@
 <div *ngIf="finalizado" class="resultado">
   <div class="resultado-header">
     <h2 class="question-text">Resultado do Simulado</h2>
-    <button class="submit" (click)="voltarHome()">Voltar para a Home</button>
+    <button class="submit" (click)="voltarSimulado()">Voltar para simulados</button>
   </div>
 
 

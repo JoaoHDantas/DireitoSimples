@@ -1,5 +1,9 @@
+<div class="voltar-estudo">
+<button (click)="voltarEstudoDiario()">
+  <img src="assets/icons/leave.svg" alt="">
+</button>
+</div>
 <div class="question-wrapper" *ngIf="question">
-
   <div class="question-content">
     <div class="question-body">
       <h2 class="question-text">{{ question.question_text }}</h2>
@@ -7,7 +11,8 @@
       <ul class="alternatives">
         <li *ngFor="let alt of ['A', 'B', 'C', 'D', 'E']"
             [class.selected]="selectedAnswer === alt"
-            (click)="selectAnswer(alt)">
+            (click)="selectAnswer(alt)"
+            [class.disabled]="isAnswered">
           <span class="circle"></span>
           <span class="alternative-text">{{ question['alternative_' + alt.toLowerCase()] }}</span>
         </li>
@@ -21,16 +26,21 @@
       </div>
     </div>
   </div>
-      <div class="voltar-estudo">
-      <button (click)="voltarEstudoDiario()">
-        🔙 Voltar para Estudo Diário
-      </button>
-    </div>
 
 
   <div style="text-align: right; margin-top: 1rem;">
-    <button class="submit" (click)="submitAnswer()" [disabled]="!selectedAnswer">
+    <button *ngIf="!isAnswered" 
+            class="submit" 
+            (click)="submitAnswer()" 
+            [disabled]="!selectedAnswer">
       Responder
+    </button>
+
+    <button *ngIf="isAnswered"
+            class="submit"
+            id="finalizar"
+            (click)="voltarEstudoDiario()">
+      Finalizar
     </button>
   </div>
 </div>

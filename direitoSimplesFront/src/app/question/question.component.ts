@@ -19,6 +19,7 @@ export class QuestionComponent implements OnInit {
   questionId: number = 0;
   selectedAnswer: string = '';
   feedback: any;
+  isAnswered: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -40,6 +41,7 @@ export class QuestionComponent implements OnInit {
       this.question = data;
       this.selectedAnswer = '';
       this.feedback = null;
+      this.isAnswered = false;
     });
   }
 
@@ -47,10 +49,13 @@ export class QuestionComponent implements OnInit {
     this.selectedAnswer = letter;
   }
   submitAnswer(): void {
+  if (this.isAnswered) return;
+
   const answerPayload = { [this.questionId]: this.selectedAnswer };
 
   this.questionService.submitAnswers(answerPayload).subscribe(res => {
     this.feedback = res.find((f: any) => f.question_id == this.questionId);
+    this.isAnswered = true;
 
     // 🔥 Atualiza o estudo diário
     this.estudoDiarioService.responder({

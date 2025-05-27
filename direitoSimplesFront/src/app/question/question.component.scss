@@ -5,6 +5,11 @@
     padding: 1rem 2rem;
   }
   
+  .alternatives li.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+  }
+  
   .fullscreen-button {
     background: transparent;
     border: none;
@@ -148,24 +153,36 @@
     border-radius: 10px;
     font-weight: bold;
     font-size: 1rem;
+    cursor: pointer;
+  }
+  #finalizar{
+    background: rgb(0, 158, 0);
   }
 
-  .voltar-estudo {
-  margin-top: 20px;
-  text-align: center;
+.voltar-estudo {
+  position: fixed;
+  top: 20px;
+  right: 20px;
 
   button {
-    background-color: #3f83f8;
-    color: white;
+    background-color: transparent;
     border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
     cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
 
     &:hover {
-      background-color: #1e40af;
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    img {
+      width: 30px;
+      height: 30px;
     }
   }
 }
