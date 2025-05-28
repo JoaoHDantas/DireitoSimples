@@ -27,7 +27,7 @@ ngOnInit(): void {
   this.estudoService.iniciarEstudo().subscribe({
     next: (res) => {
       console.log('Estudo iniciado ou já existente', res);
-      this.getProgresso();  // 🔥 Só depois que iniciou
+      this.getProgresso(); 
     }
   });
 }

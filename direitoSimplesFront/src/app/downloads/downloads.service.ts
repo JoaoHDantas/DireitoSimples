@@ -22,4 +22,5 @@ export class DownloadsService {
   getDownloads(): Observable<Download[]> {
     return this.http.get<Download[]>(this.apiUrl);
   }
+  
 }

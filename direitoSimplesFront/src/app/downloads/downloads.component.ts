@@ -21,5 +21,17 @@ export class DownloadsComponent implements OnInit {
       error: () => console.error('Erro ao carregar downloads')
     });
   }
+  baixar(caminho: string) {
+  const url = 'http://localhost:8000' + caminho;
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = ''; // força o navegador a tratar como download
+  link.target = '_blank';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+  
+  
 }
 

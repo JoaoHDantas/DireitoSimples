@@ -12,7 +12,7 @@ import random
 class EstudoDiarioViewSet(viewsets.ViewSet):
     permission_classes = [IsAuthenticated]
 
-    # 🔍 Consulta o progresso do dia
+   
     def list(self, request):
         estudo = EstudoDiario.objects.filter(usuario=request.user, data=date.today()).first()
         if estudo:
@@ -20,7 +20,7 @@ class EstudoDiarioViewSet(viewsets.ViewSet):
             return Response(serializer.data)
         return Response({"mensagem": "Nenhum estudo diário iniciado hoje."})
 
-    # 🚀 Inicia o estudo do dia (ou retorna existente)
+
     @action(detail=False, methods=['post'])
     def iniciar(self, request):
         estudo, created = EstudoDiario.objects.get_or_create(
@@ -31,7 +31,6 @@ class EstudoDiarioViewSet(viewsets.ViewSet):
             estudo.save()
         return Response({'estudo_id': estudo.id, 'etapa_atual': estudo.etapa_atual})
 
-    # 🔥 Retorna uma questão aleatória
     @action(detail=False, methods=['get'])
     def questao_random(self, request):
         questoes = Question.objects.all()
@@ -54,8 +53,7 @@ class EstudoDiarioViewSet(viewsets.ViewSet):
             "texto": questao.question_text,
             "alternativas": alternativas
         })
-
-    # ✅ Recebe a resposta do usuário
+    
     @action(detail=False, methods=['post'])
     def responder(self, request):
         questao_id = request.data.get('questao_id')
@@ -68,7 +66,7 @@ class EstudoDiarioViewSet(viewsets.ViewSet):
 
         if correta:
             estudo.etapa_atual += 1
-            if estudo.etapa_atual > 4:  # quantidade máxima de etapas
+            if estudo.etapa_atual > 4:  
                 estudo.finalizado = True
             estudo.save()
 

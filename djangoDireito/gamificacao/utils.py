@@ -12,7 +12,7 @@ def login_diario(usuario):
     pontuacao, _ = Pontuacao.objects.get_or_create(usuario=usuario)
     if pontuacao.ultimo_login_diario != hoje:
         pontuacao.ultimo_login_diario = hoje
-        pontuacao.pontos += 5  # valor fixo diário
+        pontuacao.pontos += 5 
         pontuacao.save()
         verificar_conquistas(usuario)
 

@@ -49,8 +49,6 @@ class RegisterViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
-
-        # Gera o refresh token e access token
         refresh = RefreshToken.for_user(user)
         access_token = refresh.access_token
 

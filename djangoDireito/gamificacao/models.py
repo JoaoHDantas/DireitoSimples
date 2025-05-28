@@ -6,7 +6,7 @@ from django.utils.timezone import now
 class Pontuacao(models.Model):
     usuario = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='pontuacao')
     pontos = models.IntegerField(default=0)
-    ultimo_login_diario = models.DateField(default=now)  # <-- este campo estava faltando
+    ultimo_login_diario = models.DateField(default=now)
 
 
     def __str__(self):
