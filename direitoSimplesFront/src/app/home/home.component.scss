@@ -24,22 +24,32 @@ a{
 .infohomecontainer{
     width: 28rem;
     text-align: center;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
 }
 .containerimgs{
     display: flex;
 
 }
-.img-coruja{
+.img-deusa {
     margin-top: 3rem;
-    width: 20rem;
-    height: 20rem;
+    width: 18rem;
+    height: 18rem;
     transform: scaleX(-1);
+    
+    -webkit-mask-image: linear-gradient(to top, transparent, rgba(0,0,0,1) 40%);
+    mask-image: linear-gradient(to top, transparent, rgba(0,0,0,1) 20%);
+
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.4));
 }
+
 .questao{
-    width: 28rem;
-    height: 15rem;
+    height: 18rem;
     margin-right: -5rem;
-    margin-left: 1.4rem;
+    border-radius: 15px;
+    margin-left: -2.7rem;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
 }
 
 #bnt-vamosla{
@@ -59,12 +69,79 @@ a{
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
+    margin-top: 3rem;
 }
 .container2 h1{
     width: 23rem;
     text-align: center;
 }
 #questaosimulado{
-    width: 28rem;
     height: 15rem;
+}
+
+.features{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+    h1{
+        margin-bottom: 2rem;
+    }
+}
+
+.itens_pq{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    gap: 2rem;
+}
+
+.pq{
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    height: 16rem;
+    width: 14rem;
+    padding: 1rem;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 14px;
+}
+
+.itens_pq p{
+    color: #000;
+    font-size: 0.8rem;
+}
+.itens_pq h3{
+    color: #000;
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+}
+
+.pq:hover{
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+}
+
+.footer-container {
+    width: 100%;
+    height: 10rem;
+    margin-top: 3rem;
+    background-color: #0A142F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    a{
+        color: white;
+        text-decoration: underline;
+    }
+}
+.footer-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
