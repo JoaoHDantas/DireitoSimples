@@ -1,11 +1,16 @@
-<h2>❓ Central de Ajuda</h2>
+<app-inicionavbar></app-inicionavbar>
+<div class="main_section">
+  <div class="list">
+    <h2>❓ Central de Ajuda</h2>
 
-<div class="faq-item" *ngFor="let item of faqs; let i = index">
-  <div class="faq-question" (click)="toggle(i)">
-    {{ item.pergunta }}
-    <span>{{ openedIndex === i ? '▲' : '▼' }}</span>
-  </div>
-  <div class="faq-answer" *ngIf="openedIndex === i">
-    {{ item.resposta }}
+    <div class="faq-item" *ngFor="let item of faqs; let i = index">
+      <div class="faq-question" (click)="toggle(i)">
+        {{ item.pergunta }}
+        <span>{{ openedIndex === i ? '▲' : '▼' }}</span>
+      </div>
+      <div class="faq-answer" *ngIf="openedIndex === i">
+        {{ item.resposta }}
+      </div>
+    </div>
   </div>
 </div>

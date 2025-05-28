@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FaqService, FAQ } from './faq.service';
 import { CommonModule } from '@angular/common';
+import { InicionavbarComponent } from "../inicionavbar/inicionavbar.component";
 
 
 @Component({
   selector: 'app-faq',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, InicionavbarComponent],
   templateUrl: './faq.component.html',
   styleUrls: ['./faq.component.scss']
 })

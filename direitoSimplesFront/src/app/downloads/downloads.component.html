@@ -1,13 +1,18 @@
-<h2>📥 Downloads e Materiais</h2>
+<app-inicionavbar></app-inicionavbar>
+<div class="main_section">
+    <div class="list">
 
-<div *ngIf="downloads.length === 0">
-  <p>Nenhum material disponível no momento.</p>
-</div>
-
-<div *ngFor="let item of downloads" class="download-item">
-  <h3>{{ item.titulo }}</h3>
-  <p *ngIf="item.descricao">{{ item.descricao }}</p>
-  <a [href]="item.arquivo" target="_blank" download>⬇️ Baixar arquivo</a>
-  <div class="categoria" *ngIf="item.categoria">{{ item.categoria }}</div>
-  <hr>
+      <h2>📥 Downloads e Materiais</h2>
+      <div *ngIf="downloads.length === 0">
+      <p>Nenhum material disponível no momento.</p>
+    </div>
+    
+    <div *ngFor="let item of downloads" class="download-item">
+      <h3>{{ item.titulo }}</h3>
+      <p *ngIf="item.descricao">{{ item.descricao }}</p>
+      <a [href]="item.arquivo" target="_blank" download>⬇️ Baixar arquivo</a>
+      <div class="categoria" *ngIf="item.categoria">{{ item.categoria }}</div>
+      <hr>
+    </div>
+  </div>
 </div>

@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ArtigosService, Artigo } from './artigos.service';
+import { InicionavbarComponent } from '../inicionavbar/inicionavbar.component';
 
 @Component({
   selector: 'app-artigos',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, InicionavbarComponent],
   templateUrl: './artigos.component.html',
   styleUrls: ['./artigos.component.scss']
 })

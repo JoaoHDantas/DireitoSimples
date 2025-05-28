@@ -1,13 +1,18 @@
-<h2>📑 Artigos e Materiais</h2>
+<app-inicionavbar></app-inicionavbar>
+<div class="main_section">
+  <div class="list">
+    <h2>📑 Artigos e Materiais</h2>
 
-<div *ngIf="artigos.length === 0">
-  <p>Nenhum artigo encontrado.</p>
-</div>
+    <div *ngIf="artigos.length === 0">
+      <p>Nenhum artigo encontrado.</p>
+    </div>
 
-<div *ngFor="let artigo of artigos" class="artigo-item">
-  <h3>{{ artigo.titulo }}</h3>
-  <p *ngIf="artigo.descricao">{{ artigo.descricao }}</p>
-  <a [href]="artigo.link" target="_blank">🔗 Acessar artigo</a>
-  <div class="categoria" *ngIf="artigo.categoria">{{ artigo.categoria }}</div>
-  <hr>
+    <div *ngFor="let artigo of artigos" class="artigo-item">
+      <h3>{{ artigo.titulo }}</h3>
+      <p *ngIf="artigo.descricao">{{ artigo.descricao }}</p>
+      <a [href]="artigo.link" target="_blank">🔗 Acessar artigo</a>
+      <div class="categoria" *ngIf="artigo.categoria">{{ artigo.categoria }}</div>
+      <hr>
+    </div>
+  </div>
 </div>

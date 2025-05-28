@@ -79,6 +79,8 @@
 .descricao {
   text-align: center;
   font-size: 14px;
+  color: white;
+  font-weight: 600;
 }
 
 .descricao small {
@@ -121,6 +123,7 @@
     transform: translateY(0);
   }
 }
+
 
 @media (max-width: 768px) {
   .conteudo-conquistas {

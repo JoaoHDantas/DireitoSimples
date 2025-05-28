@@ -1,14 +1,39 @@
 /* Container geral */
-:host {
-  display: block;
-  max-width: 500px;
-  margin: 40px auto;
-  padding: 30px;
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  font-family: 'Segoe UI', 'Roboto', sans-serif;
+*{
+  font-family: 'Poppins', sans-serif;
 }
+#espaco{
+  height: 2rem;
+}
+.main_section{
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  flex-direction: column;
+  background-color: #f1f1f1;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  border-radius: 10px;
+
+}
+.list{
+  width: 40rem;
+  padding: 0 20px 20px 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 0.6s ease;  
+}
+
+
+.perfil_img{
+  background-image: url('/assets/img/perfil.png');
+  background-size: cover;
+  background-position: center;
+  height: 12rem;
+  width: 12rem;
+  border-radius: 100%;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.35));
+}
+
+
 
 /* Título */
 h2 {
@@ -60,7 +85,7 @@ div > input:focus {
 }
 
 /* Espaçamento entre os campos */
-div {
+.list div {
   margin-bottom: 16px;
 }
 
@@ -93,4 +118,15 @@ button:last-child {
 
 button:last-child:hover {
   background-color: #d5d5d5;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
