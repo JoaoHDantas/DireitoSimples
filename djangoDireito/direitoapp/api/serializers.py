@@ -1,11 +1,11 @@
 from rest_framework import serializers
 from django.contrib.auth import authenticate
-from direitoapp.models import CustomUser, Question
+from direitoapp.models import CustomUser, Question, FAQ, Artigo, Download
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ['id', 'username', 'email', 'cpf', 'password']
+        fields = ['id', 'username', 'email', 'cpf', 'endereco', 'data_nascimento', 'bio']
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
@@ -33,3 +33,21 @@ class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
         fields = '__all__'
+
+
+class FAQSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FAQ
+        fields = ['id', 'pergunta', 'resposta']
+
+class ArtigoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Artigo
+        fields = ['id', 'titulo', 'descricao', 'link', 'categoria', 'criado_em']
+
+
+class DownloadSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Download
+        fields = ['id', 'titulo', 'descricao', 'arquivo', 'categoria', 'criado_em']
+

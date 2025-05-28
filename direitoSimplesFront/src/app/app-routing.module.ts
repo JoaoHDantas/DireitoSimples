@@ -12,6 +12,11 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminAuthGuard } from './auth/admin-auth.guard';
 import { ConquistasComponent } from './gamificacao/conquistas.component';
 import { EstudoDiarioComponent } from './estudodiario/estudodiario/estudodiario.component';
+import { PerfilComponent } from './perfil/perfil.component';
+import { FaqComponent } from './faq/faq.component';
+import { ArtigosComponent } from './artigos/artigos.component';
+import { DownloadsComponent } from './downloads/downloads.component';
+
 
 
 
@@ -28,6 +33,14 @@ const routes: Routes = [
   { path: 'admin/login', component: AdminLoginComponent },
   { path: 'conquistas', component: ConquistasComponent },
   { path: 'estudo-diario', component: EstudoDiarioComponent },
+  { path: 'perfil', component: PerfilComponent },
+  { path: 'ajuda', component: FaqComponent },
+  { path: 'artigos', component: ArtigosComponent },
+  { path: 'downloads', component: DownloadsComponent },
+
+
+
+
 
 
 ];

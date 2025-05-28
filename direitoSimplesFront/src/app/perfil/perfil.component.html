@@ -1,0 +1,49 @@
+<h2>👤 Meu Perfil</h2>
+
+<div *ngIf="successMessage" class="success">{{ successMessage }}</div>
+<div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+<div *ngIf="perfil">
+  <div>
+    <label>Nome de usuário:</label>
+    <input [(ngModel)]="perfil.username" [disabled]="!editMode">
+  </div>
+
+  <div>
+    <label>Email:</label>
+    <input [(ngModel)]="perfil.email" [disabled]="!editMode">
+  </div>
+
+  <div>
+    <label>CPF:</label>
+    <input [value]="perfil.cpf" disabled>
+  </div>
+
+  <div>
+    <label>Endereço:</label>
+    <input [(ngModel)]="perfil.endereco" [disabled]="!editMode">
+  </div>
+
+  
+  <div>
+    <label>Bio:</label>
+    <input [(ngModel)]="perfil.bio" [disabled]="!editMode">
+  </div>
+
+  
+<div>
+  <label>Data de nascimento:</label>
+  <input type="date" [(ngModel)]="perfil.data_nascimento" [disabled]="!editMode">
+</div>
+
+
+  <div style="margin-top: 10px;">
+    <button *ngIf="!editMode" (click)="editar()">Editar</button>
+    <button *ngIf="editMode" (click)="salvar()">Salvar</button>
+    <button *ngIf="editMode" (click)="cancelar()">Cancelar</button>
+  </div>
+</div>
+
+<div *ngIf="!perfil">
+  <p>Carregando perfil...</p>
+</div>

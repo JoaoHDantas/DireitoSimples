@@ -14,6 +14,7 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { PontuacaoComponent } from './pontuacao/pontuacao.component';
+import { FaqComponent } from './faq/faq.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { PontuacaoComponent } from './pontuacao/pontuacao.component';
     InicionavbarComponent,
     ReactiveFormsModule,
     AdminLoginComponent,
-    PontuacaoComponent
+    PontuacaoComponent,
+    FaqComponent,
 ],
   providers: [ {
     provide: HTTP_INTERCEPTORS,

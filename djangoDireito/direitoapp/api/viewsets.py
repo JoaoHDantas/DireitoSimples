@@ -7,9 +7,36 @@ from django.contrib.auth import authenticate, login
 from direitoapp.models import CustomUser, Question
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated 
-from .serializers import UserSerializer, LoginSerializer, HomepageSerializer, QuestionSerializer
+from .serializers import UserSerializer, LoginSerializer, HomepageSerializer, QuestionSerializer, FAQSerializer, ArtigoSerializer, DownloadSerializer
 from gamificacao.utils import adicionar_pontos
 from gamificacao.utils import login_diario
+from rest_framework import viewsets, permissions
+from rest_framework.response import Response
+from .serializers import UserSerializer
+from rest_framework import viewsets, permissions, status
+from rest_framework.response import Response
+from .serializers import UserSerializer
+from direitoapp.models import CustomUser, FAQ, Artigo, Download
+
+
+class PerfilViewSet(viewsets.ModelViewSet):
+    queryset = CustomUser.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        # Retorna apenas o próprio usuário autenticado
+        return CustomUser.objects.filter(id=self.request.user.id)
+
+    def retrieve(self, request, *args, **kwargs):
+        serializer = self.get_serializer(request.user)
+        return Response(serializer.data)
+
+    def update(self, request, *args, **kwargs):
+        serializer = self.get_serializer(request.user, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
 
 
 
@@ -101,3 +128,20 @@ class QuestionViewSet(viewsets.ModelViewSet):
                 })
 
         return Response(response_data)
+    
+
+class FAQViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = FAQ.objects.all()
+    serializer_class = FAQSerializer
+    permission_classes = [AllowAny] 
+
+class ArtigoViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Artigo.objects.all().order_by('-criado_em')
+    serializer_class = ArtigoSerializer
+    permission_classes = [IsAuthenticated]
+
+
+class DownloadViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Download.objects.all().order_by('-criado_em')
+    serializer_class = DownloadSerializer
+    permission_classes = [IsAuthenticated]

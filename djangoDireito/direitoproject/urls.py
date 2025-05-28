@@ -9,6 +9,7 @@ from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
+
 schema_view = get_schema_view(
    openapi.Info(
       title="Snippets API",
@@ -32,6 +33,7 @@ urlpatterns = [
     path('api/admin/', include(admin_router.urls)),
     path('api/gamificacao/', include('gamificacao.api.router')),
     path('api/', include(estudo_router.urls)),
+    
 
 
 ]

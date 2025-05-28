@@ -1,0 +1,56 @@
+:host {
+  display: block;
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 24px;
+}
+
+.download-item {
+  padding: 10px 0;
+}
+
+.download-item h3 {
+  color: #1976d2;
+  margin: 0 0 8px;
+}
+
+.download-item p {
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.download-item a {
+  color: #1565c0;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.download-item a:hover {
+  text-decoration: underline;
+}
+
+.categoria {
+  display: inline-block;
+  margin-top: 8px;
+  background-color: #e0ecff;
+  color: #0d47a1;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+hr {
+  border: none;
+  border-bottom: 1px solid #eee;
+  margin: 16px 0;
+}
