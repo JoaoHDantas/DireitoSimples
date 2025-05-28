@@ -68,7 +68,7 @@
         <ul class="itens_editar_simulado">
           <li class="buttons_editar_simulado" *ngFor="let q of selectedQuestions">
             {{ q.question_text }}
-            <button type="button" (click)="removeQuestion(q.id)">Remover</button>
+            <button type="button" class="remover_bnt" (click)="removeQuestion(q.id)">Remover</button>
           </li>
         </ul>
       </div>
@@ -79,7 +79,7 @@
         <ul class="itens_editar_simulado">
           <li class="buttons_editar_simulado" *ngFor="let q of availableQuestions">
             {{ q.question_text }}
-            <button type="button" (click)="addQuestion(q.id)">Adicionar</button>
+            <button type="button" class="add_bnt" (click)="addQuestion(q.id)">Adicionar</button>
           </li>
         </ul>
       </div>
@@ -87,20 +87,36 @@
     </div>
 
     <button type="submit">{{ editingSimulado ? 'Salvar Alterações' : 'Criar Simulado' }}</button>
-    <button *ngIf="editingSimulado" type="button" (click)="cancelEditSimulado()">Cancelar</button>
+    <button *ngIf="editingSimulado" type="button" class="remover_bnt" (click)="cancelEditSimulado()">Cancelar</button>
   </form>
 
   <div class="existing-section">
-    <h3>📋 Simulados Existentes</h3>
-    <ul>
-      <li *ngFor="let s of simuladosList">
-        {{ s.titulo }}
-        <div>
-          <button (click)="editSimulado(s)">Editar</button>
-          <button (click)="deleteSimulado(s.id)">Excluir</button>
-        </div>
-      </li>
-    </ul>
+  <h3>📋 Simulados Existentes</h3>
+
+  <!-- Barra de busca -->
+  <input type="text" placeholder="Buscar simulado..." [(ngModel)]="searchSimulado" />
+
+  <!-- Lista de simulados paginada -->
+  <ul>
+    <li *ngFor="let s of getPaginatedSimulados()">
+      {{ s.titulo }}
+      <div>
+        <button (click)="editSimulado(s)">Editar</button>
+        <button (click)="deleteSimulado(s.id)">Excluir</button>
+      </div>
+    </li>
+  </ul>
+
+  <!-- Controles de paginação -->
+  <div class="pagination-controls">
+    <button (click)="prevSimuladoPage()" [disabled]="currentSimuladoPage === 1">
+      Anterior
+    </button>
+    <span>Página {{ currentSimuladoPage }} de {{ totalSimuladoPages }}</span>
+    <button (click)="nextSimuladoPage()" [disabled]="currentSimuladoPage === totalSimuladoPages">
+      Próxima
+    </button>
   </div>
+</div>
 </section>
 </main>

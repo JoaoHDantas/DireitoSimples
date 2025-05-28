@@ -24,8 +24,42 @@ export class AdminPanelComponent implements OnInit {
   currentPage: number = 1;
   itemsPerPage: number = 2; // Quantidade de itens por página
   totalPages: number = 1;
+  searchSimulado: string = '';
+  currentSimuladoPage: number = 1;
+  simuladosPerPage: number = 2;
+  totalSimuladoPages: number = 1;
+
 
   constructor(private fb: FormBuilder, private http: HttpClient) {}
+
+  filteredSimulados() {
+  if (!this.searchSimulado) return this.simuladosList;
+  return this.simuladosList.filter(s =>
+    s.titulo.toLowerCase().includes(this.searchSimulado.toLowerCase())
+  );
+}
+
+// Pega os simulados da página atual
+getPaginatedSimulados() {
+  const filtered = this.filteredSimulados();
+  this.totalSimuladoPages = Math.ceil(filtered.length / this.simuladosPerPage);
+  const start = (this.currentSimuladoPage - 1) * this.simuladosPerPage;
+  const end = start + this.simuladosPerPage;
+  return filtered.slice(start, end);
+}
+
+// Paginação dos simulados
+prevSimuladoPage() {
+  if (this.currentSimuladoPage > 1) {
+    this.currentSimuladoPage--;
+  }
+}
+
+nextSimuladoPage() {
+  if (this.currentSimuladoPage < this.totalSimuladoPages) {
+    this.currentSimuladoPage++;
+  }
+}
 
   getPaginatedQuestions() {
     const filteredQuestions = this.filteredQuestions();
