@@ -10,6 +10,11 @@
 .list{
   width: 40rem;
 }
+.shadown{
+  background-color: #f1f1f1;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  border-radius: 15px;
+}
 
 h2 {
   text-align: center;
@@ -21,7 +26,7 @@ h2 {
 .download-item {
   background-color: #f1f1f1;
   border-radius: 10px;
-  padding: 20px;
+  padding: 20px 20px 0 20px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   animation: fadeIn 0.6s ease;
