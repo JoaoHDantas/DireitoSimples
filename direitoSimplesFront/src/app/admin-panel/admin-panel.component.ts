@@ -22,11 +22,11 @@ export class AdminPanelComponent implements OnInit {
   errorMessage = '';
   searchText: string = '';
   currentPage: number = 1;
-  itemsPerPage: number = 2; // Quantidade de itens por página
+  itemsPerPage: number = 3; // Quantidade de itens por página
   totalPages: number = 1;
   searchSimulado: string = '';
   currentSimuladoPage: number = 1;
-  simuladosPerPage: number = 2;
+  simuladosPerPage: number = 5;
   totalSimuladoPages: number = 1;
 
 

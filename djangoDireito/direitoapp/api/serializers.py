@@ -3,13 +3,18 @@ from django.contrib.auth import authenticate
 from direitoapp.models import CustomUser, Question, FAQ, Artigo, Download
 
 class UserSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True)
+
     class Meta:
         model = CustomUser
-        fields = ['id', 'username', 'email', 'cpf', 'endereco', 'data_nascimento', 'bio']
+        fields = ['id', 'username', 'email', 'cpf', 'endereco', 'data_nascimento', 'bio', 'password']
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
-        user = CustomUser.objects.create_user(**validated_data)
+        password = validated_data.pop('password')
+        user = CustomUser(**validated_data)
+        user.set_password(password)  # Criptografa a senha corretamente
+        user.save()
         return user
 
 class LoginSerializer(serializers.Serializer):
