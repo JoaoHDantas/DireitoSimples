@@ -121,13 +121,7 @@ class SimuladoRespondidoViewSet(viewsets.ModelViewSet):
         acertos = sum(1 for r in resultados if r['acertou'])
         total = len(resultados)
         percentual = (acertos / total) if total else 0
-
-        # 🔥 Se quiser proporcional:
         pontos = round(percentual * 10)
-
-        # 🔥 Se quiser fixo (independente do acerto):
-        # pontos = 10
-
         adicionar_pontos(request.user, pontos)
 
         return Response({

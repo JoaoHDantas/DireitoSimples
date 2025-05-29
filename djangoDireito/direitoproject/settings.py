@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-3-w!ri^otfwrh+sbs*ky^8290_3ey&zumaam$4*c==-%t)6gk2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'testserver']
 
 
 # Application definition
@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'adminpainel',
     'gamificacao',
     'estudodiario',
+    'behave',
 ]
 
 MIDDLEWARE = [
@@ -119,7 +120,7 @@ WSGI_APPLICATION = 'direitoproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': env('DB_NAME'),
         'USER': env('DB_USER'),
         'PASSWORD': env('DB_PASSWORD'),
